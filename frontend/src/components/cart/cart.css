@@ -1,0 +1,66 @@
+#cart{
+    width: 95%; display: flex;
+    flex-direction: column;
+    padding: 0px 2% 0px 2%;
+}
+#upperCart{
+    display: flex; flex-direction: row;
+    justify-content: space-between;
+}
+#upper-right-cart{
+    display: flex; flex-direction: row;
+    gap: 1rem; align-items: center;
+}
+#lowerCart{
+    display: flex; flex-direction: row;
+    justify-content: space-between;
+    margin-top: -1.5rem;
+}
+#cart:hover{
+    transform: scale(1.001); background-color: rgba(0, 0, 0, 0.097);
+}
+#cartProduct{
+    color: black;
+    font-size: 30px;
+}
+#inStock{
+    font-style: italic; font-weight: bold;
+    color: rgb(25, 165, 25);
+    font-size: 21px;
+}
+#increase{
+    border: none; height: 30%;
+    color: white;
+    background-color: black;
+}
+#increase:hover{
+    cursor: pointer;
+    background-color: rgb(216, 219, 33);
+    color: black;
+    transform: scale(1.1);
+    
+}
+#decrease{
+    border: none; height: 30%;
+    color: white;
+    background-color: black;
+}
+#decrease:hover{
+    cursor: pointer;
+    background-color: rgb(216, 219, 33);
+    color: black;
+    transform: scale(1.1);
+}
+#quantity{
+    font-weight: bold;
+    font-size: 25px;
+    color: black;
+}
+#cost{
+    font-weight: bold;
+    color: black;
+    font-family: 'mohave';
+}
+hr{
+    width: 98%; margin-top: -1rem;
+}

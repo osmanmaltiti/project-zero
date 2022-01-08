@@ -1,0 +1,152 @@
+.admin {
+    background-image: url(./background-image-2.jpg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: unset;
+}
+#adminHeader{
+    color:white;
+    position: absolute;
+    font-family: "Agency FB";
+    font-size: 50px;
+    font-weight: 100;
+    left: 1rem;
+    top:-2%;
+}
+.adminB{
+    width: 100%;
+}
+#w-adminB{
+    height: 24rem;
+    font-family: "Microsoft JhengHei UI light";
+    font-size: 25px;
+    background-color: black;
+    color: white;
+    border: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+}
+#w-adminB:hover{
+    cursor: pointer;
+    color: rgb(245, 223, 26);
+    font-size:xx-large;
+}
+#f-adminB{
+    height: 18rem;
+    font-family: "Microsoft JhengHei UI light";
+    font-size: 25px;
+    background-color: rgb(236, 232, 35);
+    border: none;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+}
+#f-adminB:hover{
+    cursor: pointer;
+    color:grey;
+    font-size: xx-large;
+}
+#footer-adminB{
+    background-color: black;
+    font-family: "Microsoft JhengHei UI light";
+    font-size: 20px;
+    color:white;
+    border: none;
+    border-radius: 6px;
+    position: absolute;
+    right: 3rem;
+    bottom: 1rem;
+    width: 15rem;
+    height: 3rem;
+}
+#footer-adminB:hover{
+    background-color: red;
+    color: black;
+    transform: scale(1.1);
+    transition: transform 2s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    cursor: pointer;
+}
+body{
+    background-color: rgb(26, 24, 24);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    display: unset;
+}
+
+.woodDialog{
+    background-color: grey;
+    font-family: 'Agency FB';
+    font-size: 10px;
+    text-align: center;
+    width: 22.3rem;
+    height: 33rem;
+    border-radius: 6px;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    position: absolute;
+    top: 1rem;
+    left: 30rem;
+    overflow-y: scroll;
+}
+.woodDialog::-webkit-scrollbar{
+    width: 0.7em;
+    background-color: gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.woodDialog::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px gray;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+.woodDialog::-webkit-scrollbar-thumb {
+    background-color: black;
+    outline: 1rem;
+    outline-color: black;
+    border-radius: 6px;
+  }
+.adminForm{
+    position: absolute;
+    top: -1rem;
+    left: 1rem;
+}
+select{
+    width: 20rem;
+    height: 2rem;
+    font-family: "Microsoft JhengHei UI light";
+    font-weight: bold;
+    font-size: 20px;
+}
+.popInput{
+    width: 19.5rem;
+    height: 2rem;
+    font-family: "Microsoft JhengHei UI light";
+    font-weight: bold;
+    font-size: 20px;
+    
+}
+#popsubmitB{
+    background-color: black;
+    font-family: "Microsoft JhengHei UI light";
+    font-size: 15px;
+    color:white;
+    border: none;
+    border-radius: 6px;
+    position: absolute;
+    right: 7.5rem;
+    bottom: -3rem;
+    width: 5rem;
+    height: 2rem;
+}
+#popsubmitB:hover{
+    background-color: rgb(236, 232, 35);
+    color: black;
+    transform: scale(1.05);
+    cursor: pointer;
+}

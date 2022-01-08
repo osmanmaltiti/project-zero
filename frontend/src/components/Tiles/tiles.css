@@ -1,0 +1,85 @@
+#tiles{
+    width: 85%; height: 20%;
+    background-color: black; display: flex;
+    flex-direction: row; justify-content: space-between;
+    padding: 10px; margin-top: 10px;
+    border-radius: 10px; background-color: white;
+    box-shadow: 0px 0px 7px 1px rgb(197, 197, 197);
+}
+#img-texts{
+    display: flex; flex-direction: row; width: 60%;
+}
+#tile-texts{
+    display: flex; flex-direction: column;
+    margin-left: 3%;
+    height: 100%;
+}
+.tile-texts{
+    margin-top: -13% ;
+}
+#tiles:hover{
+    background-color: black;
+}
+#tiles:hover #addToCart{
+    opacity: 100%;
+}
+#tiles:hover .tile-texts{
+    color: white;
+}
+#imgCon{
+    overflow: hidden; background-color: aqua;
+    height: 100%;
+    width: 25%;
+}
+#imgCon img{
+    width: 100%;
+    height: 70%;
+}
+#imgCon img:hover{
+    transform: scale(1.1);
+    transition: 2s cubic-bezier(0.24,0.45,0.45,0.95);
+}
+#product{
+    color: black;
+    font-family: "Mohave";
+    font-weight: bolder;
+    margin: -2% 0% 10% 0%;
+}
+#measure{
+    color: black;
+    font-family: "Microsoft JhengHei UI light";
+}
+#type{
+    color: black;
+    font-family: "Microsoft JhengHei UI light";
+}
+#price{
+    color: black;
+    font-family: "Microsoft JhengHei UI light";
+}
+#priceCounter{
+    font-family: "Microsoft JhengHei UI light";
+    font-weight: bold;
+    color: black;
+}
+#addToCart{
+    width: 8rem; align-self: center;
+    height: 3rem; margin-right: 10px;
+    border-color: transparent;
+    border-width: 1px;
+    border-radius: 5px;
+    font-family: 'Roboto Condensed';
+    font-size: 23px;
+    text-align: center;
+    opacity: 0%;
+}
+#addToCart:hover{
+    color: white;
+    background-color: rgb(65, 64, 64);
+    border-color: rgb(65, 64, 64);
+    border-radius: 5px;
+    cursor: pointer;
+}
+p:hover{
+    cursor:default;
+}
