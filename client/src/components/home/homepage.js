@@ -29,7 +29,7 @@ export const Home = () => {
                 <div id="c-buttons">
                     <div id='static-frame'><button id="c-b0" className="c-buttons" onClick={()=>navigate('/homepage/wood')}><p className='button-text'>Wood</p></button></div>
                     <div id='static-frame'><button id="c-b1" className="c-buttons" onClick={()=>navigate('/homepage/furniture')}><p className='button-text'>Doors/Furniture</p></button></div>
-                    <div id='static-frame'><button id="c-b2" className="c-buttons" onClick={()=>navigate('/admin')}><p className='button-text'>Custom</p></button></div>
+                    <div id='static-frame'><button id="c-b2" className="c-buttons" ><p className='button-text'>Custom</p></button></div>
                 </div>
             </div>
         </div>
