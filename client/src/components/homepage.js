@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import auth from '../services/Auth';
-import Popup from 'reactjs-popup';
 import '../styles/homepage/home.css';
 
 export const Home = () => {
