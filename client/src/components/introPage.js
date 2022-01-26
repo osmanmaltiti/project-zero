@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {SignUp, LogIn} from '../sign/sign';
-import './introPage.css';
+import {SignUp, LogIn} from './sign';
+import '../styles/introPage/introPage.css'
 
 export const IntroPage = () => {
 const [toggle, setToggle] = useState(true);
@@ -25,8 +25,8 @@ return(
             {toggle === true ? <LogIn handleClick = {handleClick}/> : 
                                 <SignUp handleClick = {handleClick}/> }
         <div id="footer">
-            <p id="ft0">Contact Us: +233-00-000-0000</p>
-            <p id="ft1">Locate Us: BEGORO, EASTERN REGION</p>
+            <p className="footer-text">Contact Us: +233-00-000-0000</p>
+            <p className="footer-text">Locate Us: BEGORO, EASTERN REGION</p>
         </div>         
     </div>
     )

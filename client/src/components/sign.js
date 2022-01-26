@@ -1,8 +1,8 @@
 import React from "react";
-import inputHook from "../IntroPage/inputHook";
+import inputHook from "./custom-hooks/inputHook";
 import auth from '../services/Auth';
 import { useNavigate } from "react-router-dom";
-import './sign.css';
+import '../styles/sign/sign.css';
 
 export const LogIn = (props) => {
     const [bindUsername, resetUsername] = inputHook('');

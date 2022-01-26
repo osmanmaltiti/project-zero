@@ -1,41 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Popup from 'reactjs-popup';
-import Cart from '../cart/cart';
-import { Tiles } from '../Tiles/tiles';
-import './furniturePage.css';
+import Cart from './cart';
+import { Tiles } from './tiles';
+import '../styles/wood-furniture/wood-furniture.css'
+
 
 
 export const Furniture = () => {
     const navigate = useNavigate();
     return(
-        <div id='mainFurniture'>
-            <div id='furnitureButtons'>
+        <div id='mainWood'>
+            <div id='woodButtons'>
                 <button onClick={()=> navigate('/homepage/furniture/singlepanel')} 
-                        className='furnitureButtons'>Single Panel</button>
+                        className='woodButtons'>Single Panel</button>
                 <button onClick={()=> navigate('/homepage/furniture/doublepanel')} 
-                        className='furnitureButtons'>Double Panel</button>
+                        className='woodButtons'>Double Panel</button>
             </div>
         </div>
     ) 
 }
+
 export const SinglePanel = () => {
     const [data, setData] = useState([]);
-    const [cartData, setCartData] = useState([]);
+    
+
     useEffect(() => {
         (async() => {
-            const res  = await fetch('/api');
+            const res  = await fetch('/api/data');
             const resData = await res.json();
-            setData(resData.dummyData.furniture);
+            setData(resData.furniture);
         })()
     }, []);
+    
+    const [cartData, setCartData] = useState([]);
     function cartArray(array, id){
-        return [...new Map(array.map(item => [item[id], item])).values()]
-    }
-    const filter = cartArray(cartData, 'id');
+        return [...new Map(array.map(item => [item[id], item])).values()];
+    }; const filter = cartArray(cartData, 'id');
+
+    const [newCartData, setNewCartData] = useState(["dummy"]);
+    const dataFromCart = (cartData) => {
+        setNewCartData([...newCartData, cartData]);
+    }; 
+    function newCartArray(array, id){
+        return [...new Map(array.map(item => [item[id], item])).values()];
+    }; const filterNewCartData = newCartArray(newCartData, 'id');
+    console.log(filterNewCartData);
+
     return(
-        <div id='subFurniture'>
-           <div id='furniture-header'>
+        <div id='subWood'>
+           <div id='wood-header'>
                 <p className='product-header'>Single Panel Doors</p>
                 <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
                    <div id='cart-div'>
@@ -43,11 +57,12 @@ export const SinglePanel = () => {
                                                     product={item.name}
                                                     price={item.price}
                                                     quantities={item.quantity}
-                                                    stock={item.quantity}/>)}
+                                                    stock={item.quantity}
+                                                    dataFromCart = {dataFromCart}/>)}
                    </div>
                 </Popup>
            </div>
-           <div id='furniture-tile'>
+           <div id='wood-tile'>
                 {data.filter(item => item.type === 'Single-panel')
                     .map((item) => <Tiles key={item.id} 
                                             productName={item.name} 
@@ -63,14 +78,15 @@ export const SinglePanel = () => {
         </div>
     ) 
 }
+
 export const DoublePanel = () => {
     const [data, setData] = useState([]);
     const [cartData, setCartData] = useState([]);
     useEffect(() => {
         (async() => {
-            const res  = await fetch('/api');
+            const res  = await fetch('/api/data');
             const resData = await res.json();
-            setData(resData.dummyData.furniture);
+            setData(resData.furniture);
         })();
     }, []);
     function cartArray(array, id){
@@ -78,8 +94,8 @@ export const DoublePanel = () => {
     }
     const filter = cartArray(cartData, 'id');
     return(
-        <div id='subFurniture'>
-           <div id='furniture-header'>
+        <div id='subWood'>
+           <div id='wood-header'>
                 <p className='product-header'>Double Panel Doors</p>
                 <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
                    <div id='cart-div'>
@@ -91,7 +107,7 @@ export const DoublePanel = () => {
                    </div>
                 </Popup>
            </div>
-           <div id='furniture-tile'>
+           <div id='wood-tile'>
                 {data.filter(item => item.type === 'Double-panel')
                     .map((item, index) => <Tiles key={index} 
                                             productName={item.name}

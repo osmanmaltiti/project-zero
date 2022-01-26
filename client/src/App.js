@@ -1,10 +1,10 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
-import { IntroPage } from './components/IntroPage/introPage';
-import { PrivateRoute } from './components/services/private-route';
-import { Home } from './components/home/homepage';
-import { Wood, Beam, Board, Pole } from './components/wood-furniture-Page/woodpage';
-import { Furniture, DoublePanel, SinglePanel } from './components/wood-furniture-Page/furniturePage';
+import { IntroPage } from './components/introPage';
+import { PrivateRoute } from './services/private-route';
+import { Home } from './components/homepage';
+import { Wood, Beam, Board, Pole } from './components/woodpage';
+import { Furniture, DoublePanel, SinglePanel } from './components/furniturePage';
 import './App.css';
 
 const App = () => {

@@ -1,5 +1,5 @@
 import React, { useState, useReducer } from "react";
-import './cart.css';
+import '../styles/cart/cart.css'
 
 const reducer = (state, recieved) => {
     let currentCost = state.price * state.quantity;
@@ -69,16 +69,18 @@ const Cart = (props) => {
     return(
         <div id='cart'>
             <div id="upperCart">
-            <p id="cartProduct">{value.product}</p>
-            <div id="upper-right-cart">
-            <button id='increase' onClick={handleIncrement}>+</button>
-            <p id="quantity">{value.quantity}</p>
-            <button id='decrease' onClick={handleDecrement}>-</button>
-            </div></div>
+                <p id="cartProduct">{value.product}</p>
+                <div id="upper-right-cart">
+                    <button id='increase' onClick={handleIncrement}>+</button>
+                    <p id="quantity">{value.quantity}</p>
+                    <button id='decrease' onClick={handleDecrement}>-</button>
+                </div>
+            </div>
             <div id="lowerCart">
-            <p id="inStock">In Stock: {value.stock}</p>
-            <p id="cost">Total cost:  GHS {value.cost}</p></div>
-            <hr id='line' color="black"/>
+                <p id="inStock">In Stock: {value.stock}</p>
+                <p id="cost">Total cost:  GHS {value.cost}</p>
+            </div>
+            <hr id='line' width= '90%' color="black"/>
         </div>
     )
 }

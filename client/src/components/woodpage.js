@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Popup from 'reactjs-popup';
-import { Tiles } from '../Tiles/tiles';
-import Cart from '../cart/cart';
-import './woodpage.css';
+import { Tiles } from './tiles';
+import Cart from './cart';
+import '../styles/wood-furniture/wood-furniture.css'
 
 
 export const Wood = () => {
@@ -21,6 +21,7 @@ export const Wood = () => {
         </div>
     ) 
 }
+
 export const Beam = () => {
     const [data, setData] = useState([]);
     const [cartData, setCartData] = useState([]);
@@ -65,6 +66,7 @@ export const Beam = () => {
         </div>
     ) 
 }
+
 export const Board = () => {
     const [data, setData] = useState([]);
     const [cartData, setCartData] = useState([]);
@@ -109,6 +111,7 @@ export const Board = () => {
         </div>
     ) 
 }
+
 export const Pole = () => {
     const [data, setData] = useState([]);
     const [cartData, setCartData] = useState([]);
