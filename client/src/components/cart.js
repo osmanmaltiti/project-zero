@@ -51,6 +51,8 @@ const Cart = (props) => {
                     total_cost: value.cost
                 },
                 id: name};
+            default:
+                return state
         }
     }
     const [cart, cartPush] = useReducer(cartReducer, {});
