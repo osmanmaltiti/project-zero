@@ -22,4 +22,5 @@ const dummy = {
         {name: 'Odum_Door', price: 250, quantity: 9, id: 18, type: 'Single-panel', dimensions: '25x70'},
     ]
 }
-module.exports = dummy;
+const { wood, furniture } = dummy;
+module.exports = { wood, furniture };

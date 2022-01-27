@@ -5,42 +5,19 @@
 
     #upperCart{
         display: flex; flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-between; align-items: center;
         
         #cartProduct{
             color: black;
             font-size: 30px;
         }
-        #upper-right-cart{
-            display: flex; flex-direction: row;
-            gap: 1rem; align-items: center;
-            
-            #increase{
-                border: none; height: 30%;
-                color: white;
-                background-color: black;
-                &:hover{
-                    cursor: pointer;
-                    background-color: rgb(216, 219, 33);
-                    color: black;
-                    transform: scale(1.1); 
-                }
-            }
-            #decrease{
-                border: none; height: 30%;
-                color: white;
-                background-color: black;
-                &:hover{
-                    cursor: pointer;
-                    background-color: rgb(216, 219, 33);
-                    color: black;
-                    transform: scale(1.1);
-                }
-            }
-            #quantity{
-                font-weight: bold;
-                font-size: 25px;
-                color: black;
+        #remove-item{
+            background: none; border: none;
+            color: red; font-size: 17px; 
+            margin-top: 10px;
+            opacity: 0;
+            &:hover{
+                cursor: pointer;
             }
         }
     }
@@ -64,5 +41,10 @@
     &:hover{
         transform: scale(1.001); 
         background-color: rgba(0, 0, 0, 0.097);
+        #upperCart{
+            #remove-item{
+                opacity: 100%;
+            }
+        }
     }
 }

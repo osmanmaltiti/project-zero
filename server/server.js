@@ -1,11 +1,14 @@
 const express = require('express');
-const userRouter = require('./routes/main-route.js');
+const woodRoute = require('./routes/wood-route.js');
+const furnitureRoute = require('./routes/furniture-route.js');
 const app = express();
 const port = 5000;
+
 app.use(express.urlencoded({extended: true}));
 
 
-app.use('/', userRouter);
+app.use('/', woodRoute);
+app.use('/', furnitureRoute);
 
 
 

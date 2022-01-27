@@ -1,13 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import Popup from 'reactjs-popup';
-import { Tiles } from './tiles';
-import Cart from './cart';
 import '../styles/wood-furniture/wood-furniture.css'
+import { addBeam, addBoard, addPole } from '../redux/features/wood-slice';
+import { useWood } from './custom-hooks/controller-hook';
 
 
 export const Wood = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    useEffect(() => {
+        (async() => {
+            const beam = axios.get('/api/beam');
+            const board = axios.get('/api/board');
+            const pole = axios.get('/api/pole');
+            const res = await axios.all([beam, board, pole]);
+            const [Beam, Board, Pole] = res;
+            dispatch(addBeam(Beam.data));
+            dispatch(addBoard(Board.data));
+            dispatch(addPole(Pole.data))
+            
+        })();
+    }, [dispatch]);
     return(
         <div id='mainWood'>
             <div id='woodButtons'>
@@ -23,135 +39,65 @@ export const Wood = () => {
 }
 
 export const Beam = () => {
-    const [data, setData] = useState([]);
-    const [cartData, setCartData] = useState([]);
-    useEffect(() => {
-        (async() => {
-            const res = await fetch('/api/data');
-            const resData = await res.json();
-            setData(resData.wood);
-        })();
-    }, []);
-    function cartArray(array, id){
-        return [...new Map(array.map(item => [item[id], item])).values()]
-    }
-    const filter = cartArray(cartData, 'id');
+    const PanelData = useSelector(state => state.wood.beam);
+    const Cart = useSelector(state => state.wood.woodCart);
+    const { mapWood, mapCartItems } = useWood();
     return(
         <div id='subWood'>
            <div id='wood-header'>
                <p className='product-header'>Beam</p>
                <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
                    <div id='cart-div'>
-                   {filter.map((item) => <Cart key={item.id}
-                                                    product={item.name}
-                                                    price={item.price}
-                                                    quantities={item.quantity}
-                                                    stock={item.quantity}/>)}
+                       { mapCartItems(Cart) }
                    </div>
                </Popup>
            </div>
            <div id='wood-tile'>
-                {data.filter(item => item.type === 'Beam')
-                     .map((item, index) => <Tiles key={index} 
-                                            productName={item.name} 
-                                            unitPrice={item.price}
-                                            type={item.type} 
-                                            dimensions={item.dimensions}
-                                            handleSubmit={() => {
-                                                let {name, price, quantity, id} = item;
-                                                const cartObj = { name, price, quantity, id };
-                                                setCartData([...cartData, cartObj]);
-                                            }}/>)}
+                { mapWood(PanelData) }
            </div>
         </div>
     ) 
 }
 
 export const Board = () => {
-    const [data, setData] = useState([]);
-    const [cartData, setCartData] = useState([]);
-    useEffect(() => {
-        (async() => {
-            const res = await fetch('/api/data');
-            const resData = await res.json();
-            setData(resData.wood);
-        })();
-    }, []);
-    function cartArray(array, id){
-        return [...new Map(array.map(item => [item[id], item])).values()]
-    }
-    const filter = cartArray(cartData, 'id');
+    const panelData = useSelector(state => state.wood.board);
+    const Cart = useSelector(state => state.wood.woodCart);
+
+    const { mapWood, mapCartItems } = useWood();
     return(
         <div id='subWood'>
            <div id='wood-header'>
                 <p className='product-header'>Board</p>
                 <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
                    <div id='cart-div'>
-                   {filter.map((item) => <Cart key={item.id}
-                                                    product={item.name}
-                                                    price={item.price}
-                                                    quantities={item.quantity}
-                                                    stock={item.quantity}/>)}
+                        { mapCartItems(Cart) }
                    </div>
                 </Popup>
            </div>
            <div id='wood-tile'>
-                {data.filter(item => item.type === 'Board')
-                     .map((item, index) => <Tiles key={index} 
-                                            productName={item.name} 
-                                            unitPrice={item.price}
-                                            type={item.type} 
-                                            dimensions={item.dimensions}
-                                            handleSubmit={() => {
-                                                let {name, price, quantity, id} = item;
-                                                const cartObj = { name, price, quantity, id };
-                                                setCartData([...cartData, cartObj]);
-                                            }}/>)}
+                { mapWood(panelData) }
            </div>
         </div>
     ) 
 }
 
 export const Pole = () => {
-    const [data, setData] = useState([]);
-    const [cartData, setCartData] = useState([]);
-    useEffect(() => {
-        (async() => {
-            const res = await fetch('/api/data');
-            const resData = await res.json();
-            setData(resData.wood);
-        })();
-    }, []);
-    function cartArray(array, id){
-        return [...new Map(array.map(item => [item[id], item])).values()]
-    }
-    const filter = cartArray(cartData, 'id');
+    const panelData = useSelector(state => state.wood.pole);
+    const Cart = useSelector(state => state.wood.woodCart);
+
+    const { mapWood, mapCartItems } = useWood();
     return(
         <div id='subWood'>
            <div id='wood-header'>
                 <p className='product-header'>Pole</p>
                 <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
                    <div id='cart-div'>
-                   {filter.map((item) => <Cart key={item.id}
-                                                    product={item.name}
-                                                    price={item.price}
-                                                    quantities={item.quantity}
-                                                    stock={item.quantity}/>)}
+                        { mapCartItems(Cart) }
                    </div>
                 </Popup>
            </div>
            <div id='wood-tile'>
-                {data.filter(item => item.type === "Pole")
-                     .map((item, index) => <Tiles key={index} 
-                                            productName={item.name}
-                                            unitPrice={item.price}
-                                            type={item.type}
-                                            dimensions={item.dimensions}
-                                            handleSubmit={() => {
-                                                let {name, price, quantity, id} = item;
-                                                const cartObj = { name, price, quantity, id };
-                                                setCartData([...cartData, cartObj]);
-                                            }}/>)}
+                { mapWood(panelData) }
            </div>
         </div>
     ) 
