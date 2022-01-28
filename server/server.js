@@ -7,8 +7,8 @@ const port = 5000;
 app.use(express.urlencoded({extended: true}));
 
 
-app.use('/', woodRoute);
-app.use('/', furnitureRoute);
+app.use('/wood', woodRoute);
+app.use('/furniture', furnitureRoute);
 
 
 

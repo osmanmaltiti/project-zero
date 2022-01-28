@@ -3,7 +3,7 @@ import {SignUp, LogIn} from './sign';
 import '../styles/introPage/introPage.css'
 
 export const IntroPage = () => {
-const [toggle, setToggle] = useState(true);
+const [toggle, setToggle] = useState(false);
 const handleClick = () => {
     setToggle(!toggle)
 }
@@ -22,7 +22,7 @@ return(
                 <li>Contracts (Related).</li>
             </ul>
         </div>
-            {toggle === true ? <LogIn handleClick = {handleClick}/> : 
+            {toggle === false ? <LogIn handleClick = {handleClick}/> : 
                                 <SignUp handleClick = {handleClick}/> }
         <div id="footer">
             <p className="footer-text">Contact Us: +233-00-000-0000</p>

@@ -18,10 +18,10 @@ export const Home = () => {
             </div>
             <div id='transparent-background'> 
                 <div id='nav-buttons'>
-                    <button className="nav-button" id="h0">Cart</button>
-                    <button className="nav-button" id="h1">Help</button>
-                    <button className="nav-button" id="h2">Pricing</button>
-                    <button className="nav-button" id="h3" onClick={signOut}>Log Out</button>
+                    <button className="nav-button" onClick={() => navigate('/homepage/checkout')}>Checkout</button>
+                    <button className="nav-button">Help</button>
+                    <button className="nav-button">Pricing</button>
+                    <button className="nav-button" onClick={signOut}>Log Out</button>
                     </div>
                 <div id="main-buttons">
                     <div className='static-frame'>

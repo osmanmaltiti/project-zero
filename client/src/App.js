@@ -6,6 +6,7 @@ import { Home } from './components/homepage';
 import { Wood, Beam, Board, Pole } from './components/woodpage';
 import { Furniture, DoublePanel, SinglePanel } from './components/furniturePage';
 import './App.css';
+import CheckoutPage from './components/checkoutPage';
 
 const App = () => {
     return(
@@ -14,6 +15,7 @@ const App = () => {
                 <Route path={'/'} element={<IntroPage/>}/>
                 <Route path={'/homepage'} element={<PrivateRoute><Home/></PrivateRoute>}/>
                 <Route path={'/homepage/wood'} element={<PrivateRoute><Wood/></PrivateRoute>}/>
+                <Route path={'/homepage/checkout'} element={<PrivateRoute><CheckoutPage/></PrivateRoute>}/>
                 <Route path={'/homepage/wood/beam'} element={<PrivateRoute><Beam/></PrivateRoute>}/>
                 <Route path={'/homepage/wood/board'} element={<PrivateRoute><Board/></PrivateRoute>}/>
                 <Route path={'/homepage/wood/pole'} element={<PrivateRoute><Pole/></PrivateRoute>}/>

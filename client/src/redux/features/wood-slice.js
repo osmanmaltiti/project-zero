@@ -24,6 +24,14 @@ const WoodSlice = createSlice({
                 return [...new Map(cart.map(item => [item[key], item])).values()]
             };
             state.woodCart = cartFilter(cart, 'id');
+        },
+        deleteItem: (state, action) => {
+            const {payload} = action;
+            let deletedItem = state.woodCart.filter(item => item.id !== payload);
+            state.woodCart = deletedItem;
+        },
+        clearWoodCart: (state) => {
+            state.woodCart = []
         }
     }
 });
@@ -31,5 +39,7 @@ const WoodSlice = createSlice({
 export const { addBeam, 
                addPole, 
                addBoard,
-               addToWoodCart } = WoodSlice.actions; 
+               addToWoodCart,
+               deleteItem,
+               clearWoodCart } = WoodSlice.actions; 
 export default WoodSlice.reducer;

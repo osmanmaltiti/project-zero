@@ -20,11 +20,21 @@ const FurnitureSlice = createSlice({
                 return [...new Map(cart.map(item => [item[key], item])).values()]
             };
             state.furnitureCart = cartFilter(cart, 'id'); 
+        },
+        deleteFurnitureItem: (state, action) => {
+            const {payload} = action;
+            let deletedItem = state.furnitureCart.filter(item => item.id !== payload);     
+            state.furnitureCart = deletedItem;
+        },
+        clearCart: (state) => {
+            state.furnitureCart = []
         }
     }
 });
 
 export const { addSinglePanel, 
                addDoublePanel,
-               addToFurnitureCart } = FurnitureSlice.actions;
+               addToFurnitureCart,
+               deleteFurnitureItem,
+               clearCart } = FurnitureSlice.actions;
 export default FurnitureSlice.reducer;

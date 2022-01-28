@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import Popup from 'reactjs-popup';
-import '../styles/wood-furniture/wood-furniture.css'
 import { addBeam, addBoard, addPole } from '../redux/features/wood-slice';
 import { useWood } from './custom-hooks/controller-hook';
+import Popup from 'reactjs-popup';
+import axios from 'axios';
+import '../styles/wood-furniture/wood-furniture.css'
 
 
 export const Wood = () => {
@@ -13,9 +13,9 @@ export const Wood = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         (async() => {
-            const beam = axios.get('/api/beam');
-            const board = axios.get('/api/board');
-            const pole = axios.get('/api/pole');
+            const beam = axios.get('/wood/api/beam');
+            const board = axios.get('/wood/api/board');
+            const pole = axios.get('/wood/api/pole');
             const res = await axios.all([beam, board, pole]);
             const [Beam, Board, Pole] = res;
             dispatch(addBeam(Beam.data));
@@ -41,7 +41,7 @@ export const Wood = () => {
 export const Beam = () => {
     const PanelData = useSelector(state => state.wood.beam);
     const Cart = useSelector(state => state.wood.woodCart);
-    const { mapWood, mapCartItems } = useWood();
+    const { mapWood, mapCartItems,submitCart } = useWood();
     return(
         <div id='subWood'>
            <div id='wood-header'>
@@ -49,6 +49,9 @@ export const Beam = () => {
                <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
                    <div id='cart-div'>
                        { mapCartItems(Cart) }
+                       <button className='checkout-button' onClick={ () =>submitCart(Cart) }>
+                            Proceed To Checkout
+                        </button>
                    </div>
                </Popup>
            </div>
@@ -63,7 +66,7 @@ export const Board = () => {
     const panelData = useSelector(state => state.wood.board);
     const Cart = useSelector(state => state.wood.woodCart);
 
-    const { mapWood, mapCartItems } = useWood();
+    const { mapWood, mapCartItems, submitCart } = useWood();
     return(
         <div id='subWood'>
            <div id='wood-header'>
@@ -71,6 +74,9 @@ export const Board = () => {
                 <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
                    <div id='cart-div'>
                         { mapCartItems(Cart) }
+                        <button className='checkout-button' onClick={ () => submitCart(Cart) }>
+                            Proceed To Checkout
+                        </button>
                    </div>
                 </Popup>
            </div>
@@ -85,7 +91,7 @@ export const Pole = () => {
     const panelData = useSelector(state => state.wood.pole);
     const Cart = useSelector(state => state.wood.woodCart);
 
-    const { mapWood, mapCartItems } = useWood();
+    const { mapWood, mapCartItems, submitCart } = useWood();
     return(
         <div id='subWood'>
            <div id='wood-header'>
@@ -93,6 +99,9 @@ export const Pole = () => {
                 <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
                    <div id='cart-div'>
                         { mapCartItems(Cart) }
+                        <button className='checkout-button' onClick={ () => submitCart(Cart) }>
+                            Proceed To Checkout
+                        </button>
                    </div>
                 </Popup>
            </div>

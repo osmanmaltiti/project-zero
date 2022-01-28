@@ -1,8 +1,9 @@
+import { addToFurnitureCart, clearCart, deleteFurnitureItem } from "../../redux/features/furniture-slice";
+import { addToWoodCart, clearWoodCart, deleteItem } from "../../redux/features/wood-slice";
+import { useDispatch } from 'react-redux';
 import { Tiles } from "../tiles";
 import Cart from "../cart";
-import { useDispatch } from 'react-redux';
-import { addToWoodCart } from "../../redux/features/wood-slice";
-import { addToFurnitureCart } from "../../redux/features/furniture-slice";
+import { submitWoodCart ,submitFurnitureCart } from "../../redux/features/checkout-slice";
 
 
 //WOOD PAGE FUNCTIONS
@@ -15,8 +16,9 @@ export const useWood = () => {
                                    unitPrice={item.price}
                                    type={item.type} 
                                    dimensions={item.dimensions}
-                                   handleSubmit={() => {
-                                        dispatch(addToWoodCart(item))
+                                   handleSubmit={(e) => {
+                                        e.preventDefault();
+                                        dispatch(addToWoodCart(item));
                                    }}
                             />);
     }
@@ -27,10 +29,21 @@ export const useWood = () => {
                             price={item.price}
                             stock={item.quantity}
                             quantities={item.quantity}
+                            type={item.type}
+                            delete={(e) => {
+                                e.preventDefault();
+                                dispatch(deleteItem(item.id))
+                            }}
                             />
         )
     }
-    return { mapWood, mapCartItems }
+    const submitCart = (cartData) => {
+        dispatch(submitWoodCart(cartData));
+        setTimeout(() => {
+            dispatch(clearWoodCart())
+        }, 1000);
+    }
+    return { mapWood, mapCartItems, submitCart }
 };
 
 //FURNITURE PAGE FUNCTIONS
@@ -43,8 +56,9 @@ export const useFurniture = () => {
                                     unitPrice={item.price}
                                     type={item.type}
                                     dimensions={item.dimensions}
-                                    handleSubmit={() => {
-                                        dispatch(addToFurnitureCart(item))
+                                    handleSubmit={(e) => {
+                                        e.preventDefault();
+                                        dispatch(addToFurnitureCart(item));
                                     }}/>)
     }
     const mapCartItems = (cartData) => {
@@ -54,8 +68,19 @@ export const useFurniture = () => {
                             price={item.price}
                             stock={item.quantity}
                             quantities={item.quantity}
+                            type={item.type}
+                            delete={(e) => {
+                                e.preventDefault();
+                                dispatch(deleteFurnitureItem(item.id));
+                            }}
                             />
         )
     }
-    return { mapFurniture, mapCartItems }
+    const submitCart = (cartData) => {
+        dispatch(submitFurnitureCart(cartData));
+        setTimeout(() => {
+            dispatch(clearCart())
+        }, 1000);
+    }
+    return { mapFurniture, mapCartItems, submitCart }
 };

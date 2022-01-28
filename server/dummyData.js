@@ -16,10 +16,10 @@ const dummy = {
         {name: 'Odum', price: 25, quantity: 6, id: 14, type: 'Pole', dimensions: '4x4'},
     ],
     furniture: [
-        {name: 'Wawa_Door', price: 250, quantity: 3, id: 15, type: 'Single-panel', dimensions: '25x70'},
-        {name: 'Walnut_Door', price: 300,  quantity: 65, id: 16, type: 'Double-panel', dimensions: '35x70'},
-        {name: 'Mahogany_Door', price: 270, quantity: 23, id: 17, type: 'Double-panel', dimensions: '30x70'},
-        {name: 'Odum_Door', price: 250, quantity: 9, id: 18, type: 'Single-panel', dimensions: '25x70'},
+        {name: 'Wawa Door', price: 250, quantity: 3, id: 15, type: 'Single-panel', dimensions: '25x70'},
+        {name: 'Walnut Door', price: 300,  quantity: 65, id: 16, type: 'Double-panel', dimensions: '35x70'},
+        {name: 'Mahogany Door', price: 270, quantity: 23, id: 17, type: 'Double-panel', dimensions: '30x70'},
+        {name: 'Odum Door', price: 250, quantity: 9, id: 18, type: 'Single-panel', dimensions: '25x70'},
     ]
 }
 const { wood, furniture } = dummy;

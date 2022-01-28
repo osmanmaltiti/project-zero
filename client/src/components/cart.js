@@ -6,8 +6,8 @@ const Cart = (props) => {
     return(
         <div id='cart'>
             <div id="upperCart">
-                <p id="cartProduct">{props.product}</p>
-                <button id="remove-item">Remove</button>
+                <p id="cartProduct">{props.product} ({props.type})</p>
+                <button id="remove-item" onClick={props.delete}>Remove</button>
             </div>
             <div id="lowerCart">
                 <p id="inStock">In Stock: {props.stock}</p>
