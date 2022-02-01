@@ -1,0 +1,146 @@
+#signinform {
+  background-color: rgba(0, 0, 0, 0.877);
+  height: 30rem;
+  width: 20.5rem;
+  position: fixed;
+  right: 1rem;
+  top: 15%;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+#signinform #signform {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+#signinform #signform #formHead {
+  color: white;
+  margin: 5% 0% 0% 0%;
+  font-family: "Roboto";
+  font-size: 30px;
+}
+#signinform #signform #username {
+  color: white;
+  margin: 0%;
+}
+#signinform #signform #pass {
+  color: white;
+  margin: 0%;
+}
+#signinform #signform #login-button {
+  width: 50%;
+  margin-top: 5%;
+  font-family: "Roboto";
+  font-size: 20px;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+  border-color: black;
+}
+#signinform #signform #login-button:hover {
+  cursor: pointer;
+}
+#signinform #google-sign {
+  width: 50%;
+  height: 2.4rem;
+  font-family: "Roboto";
+  font-size: 13px;
+  color: white;
+  background-color: blue;
+  border-radius: 5px;
+  border-color: blue;
+}
+#signinform #google-sign:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+#signinform #toggle-button {
+  color: white;
+  font-size: 18px;
+}
+
+#signupform {
+  background-color: rgba(0, 0, 0, 0.877);
+  position: fixed;
+  right: 1rem;
+  top: 15%;
+  height: 30rem;
+  width: 20.5rem;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+#signupform #sign-form {
+  width: 100%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+#signupform #sign-form #formHead {
+  color: white;
+  margin: 5% 0% 0% 0%;
+  font-family: "Roboto";
+  font-size: 30px;
+}
+#signupform #sign-form #sign-label {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-top: -5%;
+}
+#signupform #sign-form #register-button {
+  width: 50%;
+  font-family: "Roboto";
+  font-size: 20px;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+  border-color: black;
+  margin-bottom: 10px;
+}
+#signupform #sign-form #register-button:hover {
+  cursor: pointer;
+}
+
+.formInput {
+  width: 20rem;
+  height: 2rem;
+  font-size: 20px;
+  font-family: "Roboto";
+  font-weight: bold;
+  border-style: none;
+  margin-top: -5%;
+}
+.formInput:focus {
+  outline: none;
+}
+
+.toggle {
+  font-family: "Roboto";
+  font-size: 18px;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.toggle:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+p {
+  font-family: "Roboto Condensed";
+  font-size: 20px;
+}/*# sourceMappingURL=sign.css.map */

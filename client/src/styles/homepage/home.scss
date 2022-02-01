@@ -1,0 +1,95 @@
+#home{
+    background-image: url('../../images/IMG_1581.JPG');
+    background-size: cover; background-position:center;
+    width: 100%; height: 100%;
+    position: fixed; top: 0rem;
+    display: flex; flex-direction: row;
+    justify-content: space-between;
+
+    #texts{
+        display: flex; flex-direction: column;
+        justify-content: space-between;
+
+        #company-name{
+            color: black; opacity: 80% !important; font-size: 8rem;
+            background-color: transparent !important; 
+            width: 38%; margin-top: 5rem; font-family: 'Righteous';
+            font-weight: 500; margin-left: 1rem;
+        }
+        #foot{
+            background-color: rgb(236, 232, 35); width: fit-content;
+            padding: 10px; border-radius: 6px; font-size: 20px;
+            font-weight: bold; margin: 0 0 1rem 1rem;
+        }
+    }
+
+    #transparent-background{
+        background-color: rgba(0, 0, 0, 0.582);
+        height: 100%; display: flex;
+        width: 50%; flex-direction: column;
+
+        #nav-buttons{
+            display: flex; align-self: flex-end;
+            margin-right: 4rem; margin-top: 1rem;
+            gap: 3rem; font-size: 25px;
+
+            .nav-button{
+                background: none; border: none ; font-size: 20px; 
+                font-family: "Mohave"; font-weight: 50; color:white;
+                &:last-of-type{
+                    color: red;
+                }
+                &:hover{
+                    cursor: pointer; transform: scale(1.1);
+                }
+            }
+        }
+
+        #main-buttons{
+            margin-top: 20%; width: 75%; 
+            display: flex; flex-direction: column; align-items: center;
+            align-self: center; gap: 3rem;
+            
+
+            .static-frame{
+                overflow: hidden; border-radius: 6px; 
+                box-shadow: 0 0 2px 0 rgb(26, 25, 25);
+
+                .main-button{ 
+                    opacity: 100%; width: 30rem; height: 80px;
+                    border-width: 1px; font-size: 25px; 
+                    border: none; color: white; font-family: "Mohave";
+                    display: flex; flex-direction: row; 
+                    justify-content: center;
+                    
+                    .button-text{
+                        background-color: antiquewhite; color: black;
+                        width: fit-content; padding: 5px; opacity: 80%;
+                        border-radius: 6px;
+                        
+                    }
+                    &:hover{
+                        opacity: 100%; cursor: pointer; 
+                        transform: scale(1.05); 
+                        transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1);  
+                    }
+                }
+            }
+        }
+    }
+    #wood-page-btn{
+        background-image: url('../../images/background4.jpg');
+        background-position: center; 
+        background-size: cover;
+    }
+    #furniture-page-btn{
+        background-image: url('../../images/door2.JPG');
+        background-position: center; 
+        background-size: cover;
+    } 
+    #custom-page-btn{
+        background-image: url('../../images/IMG_1634.JPG');
+        background-position: center; 
+        background-size: cover;
+    }
+}
