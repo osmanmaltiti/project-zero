@@ -1,5 +1,4 @@
 import React from 'react';
-//import './tiles.css';
 import '../styles/tiles/tiles.css';
 
 

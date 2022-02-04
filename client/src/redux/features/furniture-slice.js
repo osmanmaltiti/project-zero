@@ -3,17 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const FurnitureSlice = createSlice({
     name: 'furniture',
     initialState: { 
-        singlePanel: [], 
-        doublePanel: [],
         furnitureCart: []
     },
     reducers: {
-        addSinglePanel: (state, action) => {
-            state.singlePanel = action.payload
-        },
-        addDoublePanel: (state, action) => {
-            state.doublePanel = action.payload
-        },
         addToFurnitureCart: (state, action) => {
             const cart = [...state.furnitureCart, action.payload];
             const cartFilter = (cart, key) => {
@@ -32,9 +24,7 @@ const FurnitureSlice = createSlice({
     }
 });
 
-export const { addSinglePanel, 
-               addDoublePanel,
-               addToFurnitureCart,
+export const { addToFurnitureCart,
                deleteFurnitureItem,
                clearCart } = FurnitureSlice.actions;
 export default FurnitureSlice.reducer;

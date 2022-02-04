@@ -1,29 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBeam, addBoard, addPole } from '../redux/features/wood-slice';
 import { useWood } from './custom-hooks/controller-hook';
 import Popup from 'reactjs-popup';
-import axios from 'axios';
 import '../styles/wood-furniture/wood-furniture.css'
+import { useApiCall } from '../redux/APIs/API-calls';
 
 
 export const Wood = () => {
+    useApiCall();
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    useEffect(() => {
-        (async() => {
-            const beam = axios.get('/wood/api/beam');
-            const board = axios.get('/wood/api/board');
-            const pole = axios.get('/wood/api/pole');
-            const res = await axios.all([beam, board, pole]);
-            const [Beam, Board, Pole] = res;
-            dispatch(addBeam(Beam.data));
-            dispatch(addBoard(Board.data));
-            dispatch(addPole(Pole.data))
-            
-        })();
-    }, [dispatch]);
     return(
         <div id='mainWood'>
             <div id='woodButtons'>
@@ -39,9 +25,16 @@ export const Wood = () => {
 }
 
 export const Beam = () => {
-    const PanelData = useSelector(state => state.wood.beam);
+    useApiCall();
     const Cart = useSelector(state => state.wood.woodCart);
-    const { mapWood, mapCartItems,submitCart } = useWood();
+    const woodData = useSelector(state => state.woodFurniture.wood);
+    const [panelData, setPanelData] = useState([]);
+    
+    useEffect(() => {
+        setPanelData(woodData?.filter(item => item.type === 'Beam'))
+    }, [woodData]);
+
+    const { mapWood, mapCartItems, submitCart } = useWood();
     return(
         <div id='subWood'>
            <div id='wood-header'>
@@ -56,16 +49,22 @@ export const Beam = () => {
                </Popup>
            </div>
            <div id='wood-tile'>
-                { mapWood(PanelData) }
+                { mapWood(panelData) }
            </div>
         </div>
     ) 
 }
 
 export const Board = () => {
-    const panelData = useSelector(state => state.wood.board);
+    useApiCall();
     const Cart = useSelector(state => state.wood.woodCart);
-
+    const woodData = useSelector(state => state.woodFurniture.wood);
+    const [panelData, setPanelData] = useState([]);
+    
+    useEffect(() => {
+        setPanelData(woodData?.filter(item => item.type === 'Board'))
+    }, [woodData]);
+    
     const { mapWood, mapCartItems, submitCart } = useWood();
     return(
         <div id='subWood'>
@@ -88,8 +87,14 @@ export const Board = () => {
 }
 
 export const Pole = () => {
-    const panelData = useSelector(state => state.wood.pole);
+    useApiCall();
     const Cart = useSelector(state => state.wood.woodCart);
+    const woodData = useSelector(state => state.woodFurniture.wood);
+    const [panelData, setPanelData] = useState([]);
+
+    useEffect(() => {
+        setPanelData(woodData?.filter(item => item.type === 'Pole'))
+    }, [woodData]);
 
     const { mapWood, mapCartItems, submitCart } = useWood();
     return(

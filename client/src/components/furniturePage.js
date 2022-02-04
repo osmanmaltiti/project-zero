@@ -1,27 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDoublePanel, addSinglePanel } from '../redux/features/furniture-slice';
 import { useFurniture } from './custom-hooks/controller-hook';
 import Popup from 'reactjs-popup';
-import axios from 'axios';
 import '../styles/wood-furniture/wood-furniture.css'
+import { useApiCall } from '../redux/APIs/API-calls';
 
 
 
 export const Furniture = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    useEffect(() => {
-        (async() => {
-            const singlePanel = axios.get('/furniture/api/singlepanel');
-            const doublePanel = axios.get('/furniture/api/doublepanel');
-            const response = await axios.all([singlePanel, doublePanel]);
-            const [SinglePanel, DoublePanel] = response;
-            dispatch(addSinglePanel(SinglePanel.data));
-            dispatch(addDoublePanel(DoublePanel.data));
-        })()
-    }, [dispatch]);
+    
     return(
         <div id='mainWood'>
             <div id='woodButtons'>
@@ -35,8 +24,14 @@ export const Furniture = () => {
 }
 
 export const SinglePanel = () => {
-    const panelData = useSelector(state => state.furniture.singlePanel);
+    useApiCall();
+    const furnitureData = useSelector(state => state.woodFurniture.furniture);
     const Cart = useSelector(state => state.furniture.furnitureCart);
+    const [panelData, setPanelData] = useState([]);
+
+    useEffect(() => {
+        setPanelData(furnitureData?.filter(item => item.type === 'Single-panel'))
+    }, [furnitureData]);
 
     const { mapFurniture, mapCartItems, submitCart } = useFurniture();
     return(
@@ -60,8 +55,14 @@ export const SinglePanel = () => {
 }
 
 export const DoublePanel = () => {
-    const panelData = useSelector(state => state.furniture.doublePanel);
+    useApiCall();
+    const furnitureData = useSelector(state => state.woodFurniture.furniture);
     const Cart = useSelector(state => state.furniture.furnitureCart);
+    const [panelData, setPanelData] = useState([]);
+
+    useEffect(() => {
+        setPanelData(furnitureData?.filter(item => item.type === 'Double-panel'))
+    }, [furnitureData]);
 
     const { mapFurniture, mapCartItems, submitCart } = useFurniture();
     return(
