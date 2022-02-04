@@ -1,11 +1,14 @@
 import React from 'react';
 import '../styles/checkout/checkout.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeWoodItem, removeFurnitureItem} from '../redux/features/checkout-slice';
 
 
 const CheckoutPage = () => {
   const woodItems = useSelector(state => state.checkout.woodCart);
   const furnitureItems = useSelector(state => state.checkout.furnitureCart);
+  const dispatch = useDispatch();
+
   console.log(woodItems)
   return <div id='main-checkout'>
     <div id='header'>
@@ -32,6 +35,9 @@ const CheckoutPage = () => {
                             stock = {item.quantity}
                             product = {item.name}
                             type = {item.type}
+                            removeItem = {() => {
+                                dispatch(removeWoodItem(item.id))
+                            }}
                             />)
                 }
                 <hr color='black' width='90%'/>
@@ -42,6 +48,9 @@ const CheckoutPage = () => {
                                  stock = {item.quantity}
                                  product = {item.name}
                                  type = {item.type}
+                                 removeItem = {() => {
+                                     dispatch(removeFurnitureItem(item.id))
+                                 }}
                                 />)
                 }
             </div>

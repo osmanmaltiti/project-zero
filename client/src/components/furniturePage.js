@@ -9,7 +9,12 @@ import { useApiCall } from '../redux/APIs/API-calls';
 
 
 export const Furniture = () => {
+    const { getAllData } = useApiCall();
     const navigate = useNavigate();
+    
+    useEffect(() => {
+        getAllData();
+    }, []);
     
     return(
         <div id='mainWood'>
@@ -24,28 +29,25 @@ export const Furniture = () => {
 }
 
 export const SinglePanel = () => {
-    useApiCall();
+    const { getAllData } = useApiCall();
     const furnitureData = useSelector(state => state.woodFurniture.furniture);
-    const Cart = useSelector(state => state.furniture.furnitureCart);
+    const navigate = useNavigate();
     const [panelData, setPanelData] = useState([]);
+
+    useEffect(() => {
+        getAllData();
+    }, []);
 
     useEffect(() => {
         setPanelData(furnitureData?.filter(item => item.type === 'Single-panel'))
     }, [furnitureData]);
 
-    const { mapFurniture, mapCartItems, submitCart } = useFurniture();
+    const { mapFurniture } = useFurniture();
     return(
         <div id='subWood'>
            <div id='wood-header'>
                 <p className='product-header'>Single Panel Doors</p>
-                <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
-                   <div id='cart-div'>
-                        { mapCartItems(Cart) }
-                        <button className='checkout-button' onClick={ () => submitCart(Cart) }>
-                            Proceed To Checkout
-                        </button>
-                   </div>
-                </Popup>
+                <button id='cart-button' onClick={() => navigate('/homepage/checkout')}>Cart</button>
            </div>
            <div id='wood-tile'>
                 { mapFurniture(panelData) }
@@ -55,28 +57,25 @@ export const SinglePanel = () => {
 }
 
 export const DoublePanel = () => {
-    useApiCall();
+    const {getAllData} = useApiCall();
     const furnitureData = useSelector(state => state.woodFurniture.furniture);
-    const Cart = useSelector(state => state.furniture.furnitureCart);
+    const navigate = useNavigate();
     const [panelData, setPanelData] = useState([]);
+
+    useEffect(() => {
+        getAllData();
+    }, []);
 
     useEffect(() => {
         setPanelData(furnitureData?.filter(item => item.type === 'Double-panel'))
     }, [furnitureData]);
 
-    const { mapFurniture, mapCartItems, submitCart } = useFurniture();
+    const { mapFurniture } = useFurniture();
     return(
         <div id='subWood'>
            <div id='wood-header'>
                 <p className='product-header'>Double Panel Doors</p>
-                <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
-                   <div id='cart-div'>
-                        { mapCartItems(Cart) }
-                        <button className='checkout-button' onClick={ () => submitCart(Cart) }>
-                            Proceed To Checkout
-                        </button>
-                   </div>
-                </Popup>
+                <button id='cart-button' onClick={() => navigate('/homepage/checkout')}>Cart</button>
            </div>
            <div id='wood-tile'>
                 { mapFurniture(panelData) }

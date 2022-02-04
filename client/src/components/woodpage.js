@@ -2,14 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useWood } from './custom-hooks/controller-hook';
-import Popup from 'reactjs-popup';
 import '../styles/wood-furniture/wood-furniture.css'
 import { useApiCall } from '../redux/APIs/API-calls';
 
 
 export const Wood = () => {
-    useApiCall();
+    const { getAllData } = useApiCall();
     const navigate = useNavigate();
+    
+    useEffect(() => {
+        getAllData();
+    }, []);
+    
     return(
         <div id='mainWood'>
             <div id='woodButtons'>
@@ -25,28 +29,26 @@ export const Wood = () => {
 }
 
 export const Beam = () => {
-    useApiCall();
-    const Cart = useSelector(state => state.wood.woodCart);
+    const navigate = useNavigate();
     const woodData = useSelector(state => state.woodFurniture.wood);
     const [panelData, setPanelData] = useState([]);
     
+    const { getAllData } = useApiCall();
+    
     useEffect(() => {
-        setPanelData(woodData?.filter(item => item.type === 'Beam'))
+        getAllData();
+    }, []);
+
+    useEffect(() => {
+        setPanelData(woodData?.filter(item => item.type === 'Beam'));
     }, [woodData]);
 
-    const { mapWood, mapCartItems, submitCart } = useWood();
+    const { mapWood } = useWood();
     return(
         <div id='subWood'>
            <div id='wood-header'>
                <p className='product-header'>Beam</p>
-               <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
-                   <div id='cart-div'>
-                       { mapCartItems(Cart) }
-                       <button className='checkout-button' onClick={ () =>submitCart(Cart) }>
-                            Proceed To Checkout
-                        </button>
-                   </div>
-               </Popup>
+               <button id='cart-button' onClick={() => navigate('/homepage/checkout')}>Cart</button>
            </div>
            <div id='wood-tile'>
                 { mapWood(panelData) }
@@ -56,28 +58,26 @@ export const Beam = () => {
 }
 
 export const Board = () => {
-    useApiCall();
-    const Cart = useSelector(state => state.wood.woodCart);
+    const navigate = useNavigate();
     const woodData = useSelector(state => state.woodFurniture.wood);
     const [panelData, setPanelData] = useState([]);
     
+    const { getAllData } = useApiCall();
+
     useEffect(() => {
-        setPanelData(woodData?.filter(item => item.type === 'Board'))
+        getAllData();
+    }, []);
+
+    useEffect(() => {
+        setPanelData(woodData?.filter(item => item.type === 'Board'));
     }, [woodData]);
     
-    const { mapWood, mapCartItems, submitCart } = useWood();
+    const { mapWood } = useWood();
     return(
         <div id='subWood'>
            <div id='wood-header'>
                 <p className='product-header'>Board</p>
-                <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
-                   <div id='cart-div'>
-                        { mapCartItems(Cart) }
-                        <button className='checkout-button' onClick={ () => submitCart(Cart) }>
-                            Proceed To Checkout
-                        </button>
-                   </div>
-                </Popup>
+                <button id='cart-button' onClick={() => navigate('/homepage/checkout')}>Cart</button>
            </div>
            <div id='wood-tile'>
                 { mapWood(panelData) }
@@ -87,28 +87,26 @@ export const Board = () => {
 }
 
 export const Pole = () => {
-    useApiCall();
-    const Cart = useSelector(state => state.wood.woodCart);
+    const navigate = useNavigate();
     const woodData = useSelector(state => state.woodFurniture.wood);
     const [panelData, setPanelData] = useState([]);
 
+    const { getAllData } = useApiCall();
+    
     useEffect(() => {
-        setPanelData(woodData?.filter(item => item.type === 'Pole'))
+        getAllData();
+    }, []);
+
+    useEffect(() => {
+        setPanelData(woodData?.filter(item => item.type === 'Pole'));
     }, [woodData]);
 
-    const { mapWood, mapCartItems, submitCart } = useWood();
+    const { mapWood } = useWood();
     return(
         <div id='subWood'>
            <div id='wood-header'>
                 <p className='product-header'>Pole</p>
-                <Popup trigger={<button id='cart-button'>Cart</button>} position={'bottom center'}>
-                   <div id='cart-div'>
-                        { mapCartItems(Cart) }
-                        <button className='checkout-button' onClick={ () => submitCart(Cart) }>
-                            Proceed To Checkout
-                        </button>
-                   </div>
-                </Popup>
+                <button id='cart-button' onClick={() => navigate('/homepage/checkout')}>Cart</button>
            </div>
            <div id='wood-tile'>
                 { mapWood(panelData) }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useApiCall } from '../redux/APIs/API-calls';
 import auth from '../services/Auth';
 import '../styles/homepage/home.css';
 
@@ -11,7 +10,6 @@ export const Home = () => {
             navigate('/')
         })
     }
-    useApiCall();
     return(
         <div id= 'home'>
             <div id='texts'>
