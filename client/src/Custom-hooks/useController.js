@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { Tiles } from "../tiles";
-import { submitWoodCart, submitFurnitureCart } from "../../redux/features/checkout-slice";
+import { Tiles } from "../Components/tiles";
+import { submitWoodCart, submitFurnitureCart } from "../Redux/features/checkout-slice";
 
 
 //WOOD PAGE FUNCTIONS

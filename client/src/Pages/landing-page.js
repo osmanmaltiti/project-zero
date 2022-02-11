@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import {SignUp, LogIn} from './sign';
-import '../styles/introPage/introPage.css'
+import {SignUp, LogIn} from '../Components/sign';
+import '../Styles/introPage/introPage.css'
 
-export const IntroPage = () => {
+export const LandingPage = () => {
 const [toggle, setToggle] = useState(false);
 const handleClick = () => {
     setToggle(!toggle)

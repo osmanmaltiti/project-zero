@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/checkout/checkout.css';
+import '../Styles/checkout/checkout.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeWoodItem, removeFurnitureItem} from '../redux/features/checkout-slice';
+import { removeWoodItem, removeFurnitureItem} from '../Redux/features/checkout-slice';
 
 
 const CheckoutPage = () => {

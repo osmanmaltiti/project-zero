@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useFurniture } from './custom-hooks/controller-hook';
-import Popup from 'reactjs-popup';
-import '../styles/wood-furniture/wood-furniture.css'
-import { useApiCall } from '../redux/APIs/API-calls';
+import { useFurniture } from '../Custom-hooks/useController';
+import '../Styles/wood-furniture/wood-furniture.css'
+import { useApiCall } from '../APIs/API-calls';
 
 
 

@@ -1,20 +1,29 @@
 import React from "react";
-import inputHook from "./custom-hooks/inputHook";
-import auth from '../services/Auth';
+import inputHook from "../Custom-hooks/useInput";
+import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import '../styles/sign/sign.css';
+import '../Styles/sign/sign.css';
+import { signIn, signUp } from "../Redux/features/sign-slice";
+
 
 export const LogIn = (props) => {
     const [bindUsername, resetUsername] = inputHook('');
     const [bindPassword, resetPassword] = inputHook('');
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleLogSubmit = (e) => {
         e.preventDefault();
         resetPassword();
         resetUsername();
-        auth.logIn(() => {
-            navigate('/homepage')
-        })
+        dispatch(
+            signIn({
+                email: bindUsername.value,
+                password: bindPassword.value,
+                navigate: () => {
+                    navigate('/homepage')
+                }
+            })
+        );
     }
     return(
         <div id='signinform'>
@@ -33,12 +42,24 @@ export const LogIn = (props) => {
 }
 
 export const SignUp = (props) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [Username_reg, resetUsername_reg] = inputHook('');
     const [Email_reg, resetEmail_reg] = inputHook('');
     const [Password_reg, resetPassword_reg] = inputHook('');
     const [Re_password_reg, resetRepassword_reg] = inputHook('');
     const handleRegSubmit = (e) => {
         e.preventDefault();
+        dispatch(
+            signUp({
+                username: Username_reg.value,
+                email: Email_reg.value,
+                password: Password_reg.value,
+                navigate: () => {
+                    navigate('/homepage')
+                }
+            })
+        );
         resetUsername_reg();
         resetEmail_reg();
         resetPassword_reg();

@@ -1,14 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import auth from '../services/Auth';
-import '../styles/homepage/home.css';
+import { signOut } from '../Redux/features/sign-slice';
+import '../Styles/homepage/home.css';
 
 export const Home = () => {
     const navigate = useNavigate();
-    const signOut = () => {
-        auth.signOut(() => {
-            navigate('/')
-        })
+    const dispatch = useDispatch();
+    const LogOut = () => {
+        dispatch(
+            signOut({
+                navigate: () => navigate('/')
+            })
+        );
     }
     return(
         <div id= 'home'>
@@ -21,7 +25,7 @@ export const Home = () => {
                     <button className="nav-button" onClick={() => navigate('/homepage/checkout')}>Checkout</button>
                     <button className="nav-button">Help</button>
                     <button className="nav-button">Pricing</button>
-                    <button className="nav-button" onClick={signOut}>Log Out</button>
+                    <button className="nav-button" onClick={LogOut}>Log Out</button>
                     </div>
                 <div id="main-buttons">
                     <div className='static-frame'>

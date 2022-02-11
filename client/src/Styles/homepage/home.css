@@ -1,5 +1,5 @@
 #home {
-  background-image: url("../../images/IMG_1581.JPG");
+  background-image: url("../../Assets/IMG_1581.JPG");
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -111,17 +111,17 @@
   transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 #home #wood-page-btn {
-  background-image: url("../../images/background4.jpg");
+  background-image: url("../../Assets/background4.jpg");
   background-position: center;
   background-size: cover;
 }
 #home #furniture-page-btn {
-  background-image: url("../../images/door2.JPG");
+  background-image: url("../../Assets/door2.JPG");
   background-position: center;
   background-size: cover;
 }
 #home #custom-page-btn {
-  background-image: url("../../images/IMG_1634.JPG");
+  background-image: url("../../Assets/IMG_1634.JPG");
   background-position: center;
   background-size: cover;
 }/*# sourceMappingURL=home.css.map */

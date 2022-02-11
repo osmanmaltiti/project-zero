@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useWood } from './custom-hooks/controller-hook';
-import '../styles/wood-furniture/wood-furniture.css'
-import { useApiCall } from '../redux/APIs/API-calls';
+import { useWood } from '../Custom-hooks/useController';
+import '../Styles/wood-furniture/wood-furniture.css'
+import { useApiCall } from '../APIs/API-calls';
 
 
 export const Wood = () => {

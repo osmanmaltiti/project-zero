@@ -1,27 +1,27 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
-import { IntroPage } from './components/introPage';
-import { PrivateRoute } from './services/private-route';
-import { Home } from './components/homepage';
-import { Wood, Beam, Board, Pole } from './components/woodpage';
-import { Furniture, DoublePanel, SinglePanel } from './components/furniturePage';
+import { LandingPage } from './Pages/landing-page';
+import { PrivateRoute } from './Components/private-route';
+import { Home } from './Pages/homepage';
+import { Wood, Beam, Board, Pole } from './Pages/woodpage';
+import { Furniture, DoublePanel, SinglePanel } from './Pages/furniturePage';
 import './App.css';
-import CheckoutPage from './components/checkoutPage';
+import CheckoutPage from './Pages/checkoutPage';
 
 const App = () => {
     return(
         <div>
             <Routes>
-                <Route path={'/'} element={<IntroPage/>}/>
-                <Route path={'/homepage'} element={<Home/>}/>
-                <Route path={'/homepage/wood'} element={<Wood/>}/>
-                <Route path={'/homepage/checkout'} element={<CheckoutPage/>}/>
-                <Route path={'/homepage/wood/beam'} element={<Beam/>}/>
-                <Route path={'/homepage/wood/board'} element={<Board/>}/>
-                <Route path={'/homepage/wood/pole'} element={<Pole/>}/>
-                <Route path={'/homepage/furniture'} element={<Furniture/>}/>
-                <Route path={'/homepage/furniture/singlepanel'} element={<SinglePanel/>}/>
-                <Route path={'/homepage/furniture/doublepanel'} element={<DoublePanel/>}/>
+                <Route path={'/'} element={<LandingPage/>}/>
+                <Route path={'/homepage'} element={<PrivateRoute><Home/></PrivateRoute>}/>
+                <Route path={'/homepage/wood'} element={<PrivateRoute><Wood/></PrivateRoute>}/>
+                <Route path={'/homepage/checkout'} element={<PrivateRoute><CheckoutPage/></PrivateRoute>}/>
+                <Route path={'/homepage/wood/beam'} element={<PrivateRoute><Beam/></PrivateRoute>}/>
+                <Route path={'/homepage/wood/board'} element={<PrivateRoute><Board/></PrivateRoute>}/>
+                <Route path={'/homepage/wood/pole'} element={<PrivateRoute><Pole/></PrivateRoute>}/>
+                <Route path={'/homepage/furniture'} element={<PrivateRoute><Furniture/></PrivateRoute>}/>
+                <Route path={'/homepage/furniture/singlepanel'} element={<PrivateRoute><SinglePanel/></PrivateRoute>}/>
+                <Route path={'/homepage/furniture/doublepanel'} element={<PrivateRoute><DoublePanel/></PrivateRoute>}/>
             </Routes>
         </div>
     )
