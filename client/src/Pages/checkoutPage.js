@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Styles/checkout/checkout.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeWoodItem, removeFurnitureItem} from '../Redux/features/checkout-slice';
+import { removeWoodItem, removeFurnitureItem, increaseQuantity, decreaseQuantity} from '../Redux/features/checkout-slice';
 
 
 const CheckoutPage = () => {
@@ -9,7 +9,6 @@ const CheckoutPage = () => {
   const furnitureItems = useSelector(state => state.checkout.furnitureCart);
   const dispatch = useDispatch();
 
-  console.log(woodItems)
   return <div id='main-checkout'>
     <div id='header'>
         <h1>Checkout</h1>
@@ -32,25 +31,54 @@ const CheckoutPage = () => {
                 {
                     woodItems?.map(item => <CheckoutCard
                             key = {item.id}
-                            stock = {item.quantity}
+                            stock = {item.stock}
                             product = {item.name}
                             type = {item.type}
-                            removeItem = {() => {
+                            removeItem = { () => {
                                 dispatch(removeWoodItem(item.id))
-                            }}
+                                }
+                            }
+                            increment = { () => dispatch(
+                                increaseQuantity({
+                                    id: item.id, 
+                                    type: 'wood'
+                                })) 
+                            }
+                            decrement = { () => dispatch(
+                                decreaseQuantity({
+                                    id: item.id, 
+                                    type: 'wood'
+                                })) 
+                            }
+                            quantity = { item.quantity }
+                            amount = { item.amount }
                             />)
                 }
                 <hr color='black' width='90%'/>
                 <center style={{fontStyle: 'italic', fontWeight: 'light'}}>Furniture</center>
                 {
                     furnitureItems?.map(item => <CheckoutCard
-                                 key = {item.id}
-                                 stock = {item.quantity}
-                                 product = {item.name}
-                                 type = {item.type}
-                                 removeItem = {() => {
-                                     dispatch(removeFurnitureItem(item.id))
-                                 }}
+                                key = {item.id}
+                                stock = {item.stock}
+                                product = {item.name}
+                                type = {item.type}
+                                removeItem = { () => {
+                                    dispatch(removeFurnitureItem(item.id))
+                                }}
+                                increment = { () => dispatch(
+                                    increaseQuantity({
+                                        id: item.id, 
+                                        type: 'furniture'
+                                    })) 
+                                }
+                                decrement = { () => dispatch(
+                                    decreaseQuantity({
+                                        id: item.id, 
+                                        type: 'furniture'
+                                    })) 
+                                }
+                                quantity = { item.quantity }
+                                amount = { item.amount }
                                 />)
                 }
             </div>
@@ -67,9 +95,9 @@ const CheckoutCard = (props) => {
             <span><p>{props.product} ({props.type})</p></span>
             <span>
                 <div id='quantity-items'>
-                    <button>+</button>
-                    <h4>12</h4>
-                    <button>-</button>
+                    <button onClick={ props.increment }>+</button>
+                    <h4>{props.quantity}</h4>
+                    <button onClick={ props.decrement }>-</button>
                 </div>
             </span>
             <span><p>GHS {props.amount}</p></span>

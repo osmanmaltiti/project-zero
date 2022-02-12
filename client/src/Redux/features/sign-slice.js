@@ -47,6 +47,11 @@ const signSlice = createSlice({
                 prevUsers ? 
                 localStorage.setItem('users', JSON.stringify([...prevUsers, payload])):
                 localStorage.setItem('users', JSON.stringify([payload]));
+                state.signIn = {
+                    isAuthenticated: true, 
+                    currentUser: payload
+                };
+                localStorage.setItem('currentUser', JSON.stringify(state.signIn));
                 payload.navigate();
             }
         },
