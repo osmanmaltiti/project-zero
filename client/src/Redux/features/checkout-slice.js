@@ -44,11 +44,10 @@ const checkoutSlice = createSlice({
             switch(payload.type){
                 case 'wood':
                     let woodItem = current(state.woodCart).find(item => item.id === payload.id);
-                    if(woodItem.quantity <= woodItem.stock){
+                    if(woodItem.stock > woodItem.quantity){
                         let newItem = { 
                             ...woodItem, 
-                            quantity: woodItem.quantity + 1, 
-                            stock: woodItem.stock - 1, 
+                            quantity: woodItem.quantity + 1,
                             amount: woodItem.amount + woodItem.price 
                         }
                         let removeItem = current(state.woodCart).filter(item => item.id !== payload.id);
@@ -58,11 +57,10 @@ const checkoutSlice = createSlice({
                     break;
                 case 'furniture':
                     let furnitureItem = current(state.furnitureCart).find(item => item.id === payload.id);
-                    if(furnitureItem.stock !== 0){
+                    if(furnitureItem.stock > furnitureItem.quantity){
                         let newItem = { 
                             ...furnitureItem, 
                             quantity: furnitureItem.quantity + 1, 
-                            stock: furnitureItem.stock - furnitureItem.quantity, 
                             amount: furnitureItem.amount + furnitureItem.price 
                         }
                         let removeItem = current(state.furnitureCart).filter(item => item.id !== payload.id);
@@ -75,7 +73,37 @@ const checkoutSlice = createSlice({
             }
         },
         decreaseQuantity: (state, action) => {
-            console.log(action.payload)
+            const { payload } = action;
+            switch(payload.type){
+                case 'wood':
+                    let woodItem = current(state.woodCart).find(item => item.id === payload.id);
+                    if(woodItem.quantity > 0){
+                        let newItem = {
+                            ...woodItem,
+                            quantity: woodItem.quantity - 1,
+                            amount: woodItem.amount - woodItem.price
+                        }
+                        let removeItem = current(state.woodCart).filter(item => item.id !== payload.id);
+                        state.woodCart = [...removeItem, newItem];
+                    }
+                    else{ return }
+                    break;
+                case 'furniture':
+                    let furnitureItem = current(state.furnitureCart).find(item => item.id === payload.id);
+                    if(furnitureItem.quantity > 0){
+                        let newItem = {
+                            ...furnitureItem,
+                            quantity: furnitureItem.quantity - 1,
+                            amount: furnitureItem.amount - furnitureItem.price
+                        }
+                        let removeItem = current(state.furnitureCart).filter(item => item.id !== payload.id);
+                        state.furnitureCart = [...removeItem, newItem];
+                    }
+                    else{ return }
+                    break;
+                default:
+                    return state;
+            }
         }
     }
 });
