@@ -1,29 +1,26 @@
 import React from "react";
-import inputHook from "../Custom-hooks/useInput";
-import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { useSign } from "../APIs/API-post";
+import inputHook from "../Custom-hooks/useInput";
 import '../Styles/sign/sign.css';
-import { signIn, signUp } from "../Redux/features/sign-slice";
 
 
 export const LogIn = (props) => {
     const [bindUsername, resetUsername] = inputHook('');
     const [bindPassword, resetPassword] = inputHook('');
-    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { postSignIn } = useSign();
     const handleLogSubmit = (e) => {
         e.preventDefault();
         resetPassword();
         resetUsername();
-        dispatch(
-            signIn({
-                email: bindUsername.value,
-                password: bindPassword.value,
-                navigate: () => {
-                    navigate('/homepage')
-                }
-            })
-        );
+        postSignIn({
+            email: bindUsername.value,
+            password: bindPassword.value,
+            navigate: () => {
+                navigate('/homepage')
+            }
+        });
     }
     return(
         <div id='signinform'>
@@ -42,26 +39,27 @@ export const LogIn = (props) => {
 }
 
 export const SignUp = (props) => {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [Username_reg, resetUsername_reg] = inputHook('');
     const [Email_reg, resetEmail_reg] = inputHook('');
+    const [Number_reg, resetNumber_reg] = inputHook('');
     const [Password_reg, resetPassword_reg] = inputHook('');
     const [Re_password_reg, resetRepassword_reg] = inputHook('');
+    const { postSignUp } = useSign();
     const handleRegSubmit = (e) => {
         e.preventDefault();
-        dispatch(
-            signUp({
-                username: Username_reg.value,
-                email: Email_reg.value,
-                password: Password_reg.value,
-                navigate: () => {
-                    navigate('/homepage')
-                }
-            })
-        );
+        postSignUp({
+            username: Username_reg.value,
+            email: Email_reg.value,
+            number: Number_reg.value,
+            password: Password_reg.value,
+            navigate: () => {
+                navigate('/homepage');
+            }
+        });
         resetUsername_reg();
         resetEmail_reg();
+        resetNumber_reg();
         resetPassword_reg();
         resetRepassword_reg();
     }
@@ -75,6 +73,9 @@ export const SignUp = (props) => {
                 <div id='sign-label'><p>Email</p>
                 <input className="formInput"  type="email" 
                 {...Email_reg}/></div>
+                <div id='sign-label'><p>Number</p>
+                <input className="formInput"  type="number" 
+                {...Number_reg}/></div>
                 <div id='sign-label'><p>Password</p>
                 <input className="formInput" type="password" 
                 {...Password_reg}/></div>

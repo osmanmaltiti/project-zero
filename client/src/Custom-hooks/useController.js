@@ -9,7 +9,7 @@ import { removeWoodItem, removeFurnitureItem, increaseQuantity, decreaseQuantity
 export const useWood = () => {
     const dispatch = useDispatch();
     const mapWood = (panelData) => {
-       return panelData.map(
+       return panelData?.map(
            (item, index) => <Tiles key={index} 
                                    productName={item.name} 
                                    unitPrice={item.price}
@@ -29,7 +29,7 @@ export const useWood = () => {
 export const useFurniture = () => {
     const dispatch = useDispatch();
     const mapFurniture = (panelData) => {
-        return panelData.map(
+        return panelData?.map(
             (item, index) => <Tiles key={index} 
                                     productName={item.name}
                                     unitPrice={item.price}
@@ -74,7 +74,7 @@ export const useCheckout = () => {
             />)
     };
     const mapFurniture = (furnitureItems) => {
-        return furnitureItems.sort((a, b) => (a.id > b.id) ? 1 : (b.id > a.id) ? -1 : 0)
+        return furnitureItems?.sort((a, b) => (a.id > b.id) ? 1 : (b.id > a.id) ? -1 : 0)
         .map(item => <CheckoutCard
                 key = {item.id}
                 stock = {item.stock}

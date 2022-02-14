@@ -8,7 +8,12 @@ const store = configureStore({
         sign: signSlice,
         checkout: checkoutSlice,
         woodFurniture: woodFurnitureSlice
-    }
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: {
+            ignoredActions: ['sign/signIn', 'sign/signUp', 'sign/signOut']
+        }
+    })
 });
 
 export default store;

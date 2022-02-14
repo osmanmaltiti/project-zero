@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useFurniture } from '../Custom-hooks/useController';
 import '../Styles/wood-furniture/wood-furniture.css'
-import { useApiCall } from '../APIs/API-calls';
+import { useApiCall } from '../APIs/API-get';
 
 
 
@@ -13,6 +13,7 @@ export const Furniture = () => {
     
     useEffect(() => {
         getAllData();
+    // eslint-disable-next-line
     }, []);
     
     return(
@@ -32,9 +33,10 @@ export const SinglePanel = () => {
     const furnitureData = useSelector(state => state.woodFurniture.furniture);
     const navigate = useNavigate();
     const [panelData, setPanelData] = useState([]);
-
+    
     useEffect(() => {
         getAllData();
+    // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -60,9 +62,10 @@ export const DoublePanel = () => {
     const furnitureData = useSelector(state => state.woodFurniture.furniture);
     const navigate = useNavigate();
     const [panelData, setPanelData] = useState([]);
-
+    
     useEffect(() => {
         getAllData();
+    // eslint-disable-next-line
     }, []);
 
     useEffect(() => {

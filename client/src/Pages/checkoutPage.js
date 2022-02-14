@@ -12,8 +12,8 @@ const CheckoutPage = () => {
   const [ furniture, setFurniture ] = useState([]);
   
   useEffect(() => {
-      setWood( [...woodItems] );
-      setFurniture( [...furnitureItems] );
+      woodItems && setWood( [...woodItems] );
+      furnitureItems && setFurniture( [...furnitureItems] );
   }, [ woodItems, furnitureItems ]);
 
   return <div id='main-checkout'>

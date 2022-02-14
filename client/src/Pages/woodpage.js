@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useWood } from '../Custom-hooks/useController';
 import '../Styles/wood-furniture/wood-furniture.css'
-import { useApiCall } from '../APIs/API-calls';
+import { useApiCall } from '../APIs/API-get';
 
 
 export const Wood = () => {
@@ -12,6 +12,7 @@ export const Wood = () => {
     
     useEffect(() => {
         getAllData();
+    // eslint-disable-next-line
     }, []);
     
     return(
@@ -37,6 +38,7 @@ export const Beam = () => {
     
     useEffect(() => {
         getAllData();
+    // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -66,6 +68,7 @@ export const Board = () => {
 
     useEffect(() => {
         getAllData();
+    // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -95,6 +98,7 @@ export const Pole = () => {
     
     useEffect(() => {
         getAllData();
+    // eslint-disable-next-line
     }, []);
 
     useEffect(() => {

@@ -1,42 +1,52 @@
 import { createSlice, current } from '@reduxjs/toolkit';
 
+const wood_cart = JSON.parse(localStorage.getItem('woodCart'));
+const furniture_cart = JSON.parse(localStorage.getItem('furnitureCart'));
 const checkoutSlice = createSlice({
     name: 'checkout',
     initialState: { 
-        woodCart: [], 
-        furnitureCart: [] 
+        woodCart: wood_cart, 
+        furnitureCart: furniture_cart 
     },
     reducers: {
         submitWoodCart: (state, action) => {
             const { payload } = action;
-            const currentWoodCart = [...state.woodCart, {...payload, quantity: 0, amount: 0}];
+            const currentWoodCart = state.woodCart ? 
+                [...state.woodCart, {...payload, quantity: 0, amount: 0}] : 
+                [payload];
             const filter = (array, key) => {
                 return [...new Map(array.map(item => [item[key], item])).values()]
             };
             const newWoodCart = filter(currentWoodCart, 'id');
             state.woodCart = newWoodCart;
+            localStorage.setItem('woodCart', JSON.stringify(state.woodCart));
         },
 
         submitFurnitureCart: (state, action) => {
             const { payload } = action;
-            const currentFurnitureCart = [...state.furnitureCart, {...payload, quantity: 0, amount: 0}];
+            const currentFurnitureCart = state.furnitureCart ? 
+                [...state.furnitureCart, {...payload, quantity: 0, amount: 0}] : 
+                [payload];
             const filter = (array, key) => {
                 return [...new Map(array.map(item => [item[key], item])).values()]
             };
             const newFurnitureCart = filter(currentFurnitureCart, 'id');
             state.furnitureCart = newFurnitureCart;
+            localStorage.setItem('furnitureCart', JSON.stringify(state.furnitureCart));
         },
 
         removeWoodItem: (state, action) => {
             const { payload } = action;
             state.woodCart = state.woodCart
                                   .filter(item => item.id !== payload);
+            localStorage.setItem('woodCart', JSON.stringify(state.woodCart));
         },
 
         removeFurnitureItem: (state, action) => {
             const { payload } = action;
             state.furnitureCart = state.furnitureCart
                                   .filter(item => item.id !== payload);
+            localStorage.setItem('furnitureCart', JSON.stringify(state.furnitureCart));
         },
 
         increaseQuantity: (state, action) => {
@@ -52,6 +62,7 @@ const checkoutSlice = createSlice({
                         }
                         let removeItem = current(state.woodCart).filter(item => item.id !== payload.id);
                         state.woodCart = [...removeItem, newItem];
+                        localStorage.setItem('woodCart', JSON.stringify(state.woodCart));
                     }
                     else{ return }
                     break;
@@ -65,6 +76,7 @@ const checkoutSlice = createSlice({
                         }
                         let removeItem = current(state.furnitureCart).filter(item => item.id !== payload.id);
                         state.furnitureCart = [...removeItem, newItem];
+                        localStorage.setItem('furnitureCart', JSON.stringify(state.furnitureCart));
                     }
                     else{ return }
                     break;
@@ -85,6 +97,7 @@ const checkoutSlice = createSlice({
                         }
                         let removeItem = current(state.woodCart).filter(item => item.id !== payload.id);
                         state.woodCart = [...removeItem, newItem];
+                        localStorage.setItem('woodCart', JSON.stringify(state.woodCart));
                     }
                     else{ return }
                     break;
@@ -98,6 +111,7 @@ const checkoutSlice = createSlice({
                         }
                         let removeItem = current(state.furnitureCart).filter(item => item.id !== payload.id);
                         state.furnitureCart = [...removeItem, newItem];
+                        localStorage.setItem('furnitureCart', JSON.stringify(state.furnitureCart));
                     }
                     else{ return }
                     break;
