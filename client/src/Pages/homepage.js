@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from '../Redux/features/sign-slice';
-import '../Styles/homepage/home.css';
+import { IoMdMenu, IoMdClose } from 'react-icons/io'
+import { FaMoneyCheckAlt, FaPhoneAlt, FaCartArrowDown } from 'react-icons/fa'
+import '../Styles/HomePage.css';
 
 export const Home = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [open, setOpen] = useState(false);
+
+    const openMenu = () => {
+        let menu = open ? 'flex absolute top-16 mt-1 right-0 flex-col bg-slate-400 pt-0 pb-4 px-4 items-start gap-2 z-10 rounded-bl-sm'
+                    : 'hidden';
+        let icon = open ? <IoMdClose className='text-2xl align-middle'/>
+                    : <IoMdMenu className='text-2xl align-middle'/>
+        return { menu, icon }
+    }
+    const { menu, icon } = openMenu();
+
     const LogOut = () => {
         dispatch(
             signOut({
@@ -15,36 +28,35 @@ export const Home = () => {
         );
     }
     return(
-        <div id= 'home'>
-            <div id='texts'>
-                <h1 id="company-name">ZOZYS ENTERPRISE</h1>
-                <p id="foot">Contact Us: +233-00-000-0000</p>
-            </div>
-            <div id='transparent-background'> 
-                <div id='nav-buttons'>
-                    <button className="nav-button" onClick={() => navigate('/homepage/checkout')}>Checkout</button>
-                    <button className="nav-button">Help</button>
-                    <button className="nav-button">Pricing</button>
-                    <button className="nav-button" onClick={LogOut}>Log Out</button>
-                    </div>
-                <div id="main-buttons">
-                    <div className='static-frame'>
-                        <button id='wood-page-btn' className="main-button" onClick={()=>navigate('/homepage/wood')}>
-                            <p className='button-text'>Wood</p>
-                        </button>
-                    </div>
-                    <div className='static-frame'>
-                        <button id='furniture-page-btn' className="main-button" onClick={()=>navigate('/homepage/furniture')}>
-                            <p className='button-text'>Doors/Furniture</p>
-                        </button>
-                    </div>
-                    <div className='static-frame'>
-                        <button id='custom-page-btn' className="main-button" >
-                            <p className='button-text'>Custom</p>
-                        </button>
-                    </div>
+        <div id='home' className='h-screen w-screen flex flex-col justify-between'>
+            <div id='menu' className='flex flex-row justify-between bg-slate-400 p-4 relative items-center'>
+                <h1 className='font-right text-3xl'>ZOZYS ENTERPRISE</h1>
+                <button onClick={() => setOpen(!open)}>{ icon }</button>
+                <div id='menu' className= { menu }>
+                    <button className='text-lg font-roboto flex flex-row font-semibold gap-2 items-center w-72 place-content-center' onClick={() => navigate('/homepage/checkout')}><FaCartArrowDown/>Checkout</button>
+                    <button className='text-lg font-roboto font-semibold flex flex-row gap-2 items-center w-72 place-content-center' onClick={() => navigate('/homepage')}><FaMoneyCheckAlt/>Pricing</button>
+                    <button className='text-lg font-roboto font-semibold flex flex-row gap-2 items-center w-72 place-content-center' onClick={() => navigate('/homepage')}><FaPhoneAlt/>Contact</button>
+                    <button className='w-full shadow-lg bg-red-500 px-4 rounded text-lg font-roboto font-semibold' onClick={LogOut}>Log Out</button>
                 </div>
             </div>
+            <div className='w-full grid py-8 place-items-center flex-grow backdrop-blur-sm'>
+                <div className='overflow-hidden w-4/5 h-3/5 rounded-md shadow-xl border-y border-solid border-gray-600 border-x'>
+                    <button id='wood-page-link' className="main-button grid w-full h-full place-items-center hover:scale-105 transition-transform duration-500" onClick={() => navigate('/homepage/wood')}>
+                        <p className='font-condensed font-semibold text-lg bg-gray-50 rounded px-2 opacity-60'>Wood</p>
+                    </button>
+                </div>
+                <div className='w-4/5 h-3/5 rounded-md overflow-hidden shadow-xl border-y border-solid border-gray-600 border-x'>
+                    <button id='furniture-page-link' className="main-button w-full h-full grid place-items-center hover:scale-105 transition-transform duration-500" onClick={() => navigate('/homepage/furniture')}>
+                        <p className='font-condensed font-semibold text-lg bg-gray-50 rounded px-2 opacity-60'>Doors/Furniture</p>
+                    </button>
+                </div>
+                <div className='w-4/5 h-3/5 overflow-hidden rounded-md shadow-xl border-y border-solid border-gray-600 border-x'>
+                    <button id='custom-page-link' className="main-button w-full h-full grid place-items-center hover:scale-105 transition-transform duration-500" onClick={() => navigate('/homepage')} >
+                        <p className='font-condensed font-semibold text-lg bg-gray-50 rounded px-2 opacity-60'>Custom</p>
+                    </button>
+                </div>
+            </div>
+            <p className='w-fit bg-yellow-300 font-semibold shadow p-2 mb-2 ml-2 rounded-md font-roboto '>Contact Us: +233-00-000-0000</p>
         </div>
             
         )

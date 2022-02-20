@@ -21,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:css": "postcss src/tailwind.css -o src/index.css",
+    "build:watch": "postcss src/tailwind.css -o src/index.css --watch"
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +44,9 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.3.2"
+    "@types/react-router-dom": "^5.3.2",
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.6",
+    "tailwindcss": "^3.0.23"
   }
 }

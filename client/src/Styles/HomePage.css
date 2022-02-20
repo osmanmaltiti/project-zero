@@ -1,0 +1,23 @@
+#home {
+  background-image: url("../Assets/IMG_1581.JPG");
+  background-size: cover;
+  background-position: center;
+}
+#wood-page-link {
+  background-image: url("../Assets/background4.jpg");
+  background-position: center;
+  background-size: cover;
+}
+#furniture-page-link {
+  background-image: url("../Assets/door2.JPG");
+  background-position: center;
+  background-size: cover;
+}
+#custom-page-link {
+  background-image: url("../Assets/IMG_1634.JPG");
+  background-position: center;
+  background-size: cover;
+}
+#menu{
+  background-color: rgba(255, 255, 255, 0.795);
+}
