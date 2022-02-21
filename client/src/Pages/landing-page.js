@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {SignUp, LogIn} from '../Components/sign';
-import '../Styles/LandingPage.css'
+import '../Styles/App.css'
 
 export const LandingPage = () => {
 const [toggle, setToggle] = useState(false);

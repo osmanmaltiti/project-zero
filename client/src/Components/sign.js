@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSign } from "../APIs/API-post";
 import inputHook from "../Custom-hooks/useInput";
-import '../Styles/LandingPage.css'
+import '../Styles/App.css'
 
 
 export const LogIn = (props) => {

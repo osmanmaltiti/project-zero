@@ -5,7 +5,7 @@ import { PrivateRoute } from './Components/private-route';
 import { Home } from './Pages/homepage';
 import { Wood, Beam, Board, Pole } from './Pages/woodpage';
 import { Furniture, DoublePanel, SinglePanel } from './Pages/furniturePage';
-import './App.css';
+import './Styles/App.css';
 import CheckoutPage from './Pages/checkoutPage';
 
 const App = () => {

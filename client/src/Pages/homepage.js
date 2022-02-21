@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { signOut } from '../Redux/features/sign-slice';
 import { IoMdMenu, IoMdClose } from 'react-icons/io'
 import { FaMoneyCheckAlt, FaPhoneAlt, FaCartArrowDown } from 'react-icons/fa'
-import '../Styles/HomePage.css';
+import '../Styles/App.css';
 
 export const Home = () => {
     const navigate = useNavigate();
