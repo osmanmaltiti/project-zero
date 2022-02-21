@@ -2,11 +2,13 @@ import { createSlice, current } from '@reduxjs/toolkit';
 
 const wood_cart = JSON.parse(localStorage.getItem('woodCart'));
 const furniture_cart = JSON.parse(localStorage.getItem('furnitureCart'));
+
 const checkoutSlice = createSlice({
     name: 'checkout',
     initialState: { 
         woodCart: wood_cart, 
-        furnitureCart: furniture_cart 
+        furnitureCart: furniture_cart,
+        cartLength: 0
     },
     reducers: {
         submitWoodCart: (state, action) => {
@@ -19,6 +21,7 @@ const checkoutSlice = createSlice({
             };
             const newWoodCart = filter(currentWoodCart, 'id');
             state.woodCart = newWoodCart;
+            state.cartLength = newWoodCart.length + current(state.furnitureCart).length;
             localStorage.setItem('woodCart', JSON.stringify(state.woodCart));
         },
 
@@ -32,6 +35,7 @@ const checkoutSlice = createSlice({
             };
             const newFurnitureCart = filter(currentFurnitureCart, 'id');
             state.furnitureCart = newFurnitureCart;
+            state.cartLength = newFurnitureCart.length + current(state.woodCart).length;
             localStorage.setItem('furnitureCart', JSON.stringify(state.furnitureCart));
         },
 
@@ -39,6 +43,7 @@ const checkoutSlice = createSlice({
             const { payload } = action;
             state.woodCart = state.woodCart
                                   .filter(item => item.id !== payload);
+            state.cartLength = state.woodCart.length + current(state.furnitureCart).length;
             localStorage.setItem('woodCart', JSON.stringify(state.woodCart));
         },
 
@@ -46,6 +51,7 @@ const checkoutSlice = createSlice({
             const { payload } = action;
             state.furnitureCart = state.furnitureCart
                                   .filter(item => item.id !== payload);
+            state.cartLength = state.furnitureCart.length + current(state.woodCart).length;
             localStorage.setItem('furnitureCart', JSON.stringify(state.furnitureCart));
         },
 

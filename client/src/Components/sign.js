@@ -23,7 +23,7 @@ export const LogIn = (props) => {
         });
     }
     return(
-        <div id='signinform' className="bg-gray-200 shadow gap-4 mx-auto w-4/5 rounded h-full flex flex-col py-8 
+        <div id='signinform' className="bg-gradient-to-r from-gray-400 to-gray-50 shadow gap-4 mx-auto w-4/5 rounded h-full flex flex-col py-8 
         md:w-96 md:fixed md:right-2 lg:right-8 md:h-fit md:top-1/4">
             <form id='signform' className="w-4/5 mx-auto gap-2 flex flex-col" onSubmit={handleLogSubmit}>
                 <h3 className="text-2xl font-right mb-4">SIGN IN</h3>
@@ -64,7 +64,7 @@ export const SignUp = (props) => {
         resetRepassword_reg();
     }
     return(
-        <div className="bg-gray-200 shadow gap-4 mx-auto w-4/5 rounded h-full flex flex-col py-8
+        <div className="bg-gradient-to-r from-gray-400 to-gray-50 shadow gap-4 mx-auto w-4/5 rounded h-full flex flex-col py-8
         md:w-80 lg:w-96 md:fixed md:top-4 md:right-8 md:h-fit lg:top-10 2xl:top-56 2xl:w-108">
             <form className="w-4/5 mx-auto gap-2 flex flex-col" action='POST' onSubmit={handleRegSubmit}>
                 <h3 className="text-2xl font-right mb-4">SIGN UP</h3>

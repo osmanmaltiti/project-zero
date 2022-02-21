@@ -4,7 +4,6 @@ import { submitWoodCart, submitFurnitureCart } from "../Redux/features/checkout-
 import { CheckoutCard } from '../Pages/checkoutPage';
 import { removeWoodItem, removeFurnitureItem, increaseQuantity, decreaseQuantity } from '../Redux/features/checkout-slice';
 
-
 //WOOD PAGE FUNCTIONS
 export const useWood = () => {
     const dispatch = useDispatch();

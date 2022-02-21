@@ -16,10 +16,10 @@ const dummy = {
         {name: 'Odum', price: 25, stock: 6, id: 14, type: 'Pole', dimensions: '4x4'},
     ],
     furniture: [
-        {name: 'Wawa Door', price: 250, stock: 3, id: 15, type: 'Single-panel', dimensions: '25x70'},
-        {name: 'Walnut Door', price: 300,  stock: 65, id: 16, type: 'Double-panel', dimensions: '35x70'},
-        {name: 'Mahogany Door', price: 270, stock: 23, id: 17, type: 'Double-panel', dimensions: '30x70'},
-        {name: 'Odum Door', price: 250, stock: 9, id: 18, type: 'Single-panel', dimensions: '25x70'},
+        {name: 'Wawa', price: 250, stock: 3, id: 15, type: 'Single-panel', dimensions: '25x70'},
+        {name: 'Walnut', price: 300,  stock: 65, id: 16, type: 'Double-panel', dimensions: '35x70'},
+        {name: 'Mahogany', price: 270, stock: 23, id: 17, type: 'Double-panel', dimensions: '30x70'},
+        {name: 'Odum', price: 250, stock: 9, id: 18, type: 'Single-panel', dimensions: '25x70'},
     ]
 }
 module.exports = dummy;

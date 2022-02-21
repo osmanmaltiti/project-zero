@@ -21,3 +21,12 @@
 #menu{
   background-color: rgba(255, 255, 255, 0.795);
 }
+@media (min-width: 768px){
+  #menu{
+    background: none;
+  }
+  #trans-background{
+    background-color: rgba(0, 0, 0, 0.404);
+    width: 45%;
+  }
+}

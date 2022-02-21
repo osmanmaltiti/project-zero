@@ -52,7 +52,6 @@ export const CheckoutCard = (props) => {
         }
     }
     return <div id="checkout-card">
-        <img id='imageUrl' alt='' src='#'/>
         <div id='items'>
             <span><p>{ props.stock }</p></span>
             <span><p>{ props.product } ({ props.type })</p></span>

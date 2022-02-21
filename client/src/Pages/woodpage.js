@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useWood } from '../Custom-hooks/useController';
-import '../Styles/wood-furniture/wood-furniture.css'
 import { useApiCall } from '../APIs/API-get';
+import { IoIosCart } from 'react-icons/io';
 
 
 export const Wood = () => {
@@ -16,15 +16,20 @@ export const Wood = () => {
     }, []);
     
     return(
-        <div id='mainWood'>
-            <div id='woodButtons'>
-                <button onClick={()=> navigate('/homepage/wood/beam')} 
-                        className='woodButtons'>Beam</button>
-                <button onClick={()=> navigate('/homepage/wood/board')} 
-                        className='woodButtons'>Board</button>
-                <button onClick={()=> navigate('/homepage/wood/pole')} 
-                        className='woodButtons'>Pole</button>
-            </div>
+        <div className='flex flex-col h-screen w-screen items-center justify-center gap-2 bg-gray-200 
+        md:grid md:grid-cols-3 md:place-items-center'>
+            <button onClick={()=> navigate('/homepage/wood/beam')} 
+                    className='bg-black text-white font-condensed text-lg border-2 border-black h-1/6 w-10/12 shadow rounded
+                    hover:scale-105 transition-all hover:bg-white hover:text-black
+                    md:h-1/3 xl:w-1/2 xl:justify-self-end'>Beam</button>
+            <button onClick={()=> navigate('/homepage/wood/board')} 
+                    className='bg-black text-white font-condensed text-lg border-2 border-black h-1/6 w-10/12 shadow rounded
+                    hover:scale-105 transition-all hover:bg-white hover:text-black
+                    md:h-1/3 xl:w-1/2'>Board</button>
+            <button onClick={()=> navigate('/homepage/wood/pole')} 
+                    className='bg-black text-white font-condensed text-lg border-2 border-black h-1/6 w-10/12 shadow rounded
+                    hover:scale-105 transition-all hover:bg-white hover:text-black
+                    md:h-1/3 xl:w-1/2 xl:justify-self-start'>Pole</button>
         </div>
     ) 
 }
@@ -32,6 +37,7 @@ export const Wood = () => {
 export const Beam = () => {
     const navigate = useNavigate();
     const woodData = useSelector(state => state.woodFurniture.wood);
+    const cartlength = useSelector(state => state.checkout.cartLength);
     const [panelData, setPanelData] = useState([]);
     
     const { getAllData } = useApiCall();
@@ -47,12 +53,15 @@ export const Beam = () => {
 
     const { mapWood } = useWood();
     return(
-        <div id='subWood'>
-           <div id='wood-header'>
-               <p className='product-header'>Beam</p>
-               <button id='cart-button' onClick={() => navigate('/homepage/checkout')}>Cart</button>
+        <div className='h-screen flex flex-col gap-2'>
+           <div className='bg-white flex flex-row justify-between p-3 shadow-md'>
+                <p className='font-right text-3xl'>Beam</p>
+                <button className='relative w-12' onClick={() => navigate('/homepage/checkout')}>
+                   <IoIosCart className='text-3xl mt-1'/>
+                   <p className='absolute top-0 right-0 w-5 h-5 bg-black text-white rounded-full font-right flex flex-col justify-center'>{ cartlength }</p>
+                </button>
            </div>
-           <div id='wood-tile'>
+           <div className='overflow-y-auto scrollbar-thin scrollbar-thumb-black w-screen flex flex-col items-center py-2 gap-4'>
                 { mapWood(panelData) }
            </div>
         </div>
@@ -62,6 +71,7 @@ export const Beam = () => {
 export const Board = () => {
     const navigate = useNavigate();
     const woodData = useSelector(state => state.woodFurniture.wood);
+    const cartlength = useSelector(state => state.checkout.cartLength);
     const [panelData, setPanelData] = useState([]);
     
     const { getAllData } = useApiCall();
@@ -77,12 +87,15 @@ export const Board = () => {
     
     const { mapWood } = useWood();
     return(
-        <div id='subWood'>
-           <div id='wood-header'>
-                <p className='product-header'>Board</p>
-                <button id='cart-button' onClick={() => navigate('/homepage/checkout')}>Cart</button>
+        <div className='h-screen flex flex-col gap-2'>
+           <div className='bg-white flex flex-row justify-between p-3 shadow-md'>
+                <p className='font-right text-3xl'>Board</p>
+                <button className='relative w-12' onClick={() => navigate('/homepage/checkout')}>
+                   <IoIosCart className='text-3xl mt-1'/>
+                   <p className='absolute top-0 right-0 w-5 h-5 bg-black text-white rounded-full font-right flex flex-col justify-center'>{ cartlength }</p>
+                </button>
            </div>
-           <div id='wood-tile'>
+           <div className='overflow-y-auto scrollbar-thin scrollbar-thumb-black w-screen flex flex-col items-center py-2 gap-4'>
                 { mapWood(panelData) }
            </div>
         </div>
@@ -92,6 +105,7 @@ export const Board = () => {
 export const Pole = () => {
     const navigate = useNavigate();
     const woodData = useSelector(state => state.woodFurniture.wood);
+    const cartlength = useSelector(state => state.checkout.cartLength);
     const [panelData, setPanelData] = useState([]);
 
     const { getAllData } = useApiCall();
@@ -107,12 +121,15 @@ export const Pole = () => {
 
     const { mapWood } = useWood();
     return(
-        <div id='subWood'>
-           <div id='wood-header'>
-                <p className='product-header'>Pole</p>
-                <button id='cart-button' onClick={() => navigate('/homepage/checkout')}>Cart</button>
+        <div className='h-screen flex flex-col gap-2'>
+           <div className='bg-white flex flex-row justify-between p-3 shadow-md'>
+                <p className='font-right text-3xl'>Pole</p>
+                <button className='relative w-12' onClick={() => navigate('/homepage/checkout')}>
+                   <IoIosCart className='text-3xl mt-1'/>
+                   <p className='absolute top-0 right-0 w-5 h-5 bg-black text-white rounded-full font-right flex flex-col justify-center'>{ cartlength }</p>
+                </button>
            </div>
-           <div id='wood-tile'>
+           <div className='overflow-y-auto scrollbar-thin scrollbar-thumb-black w-screen flex flex-col items-center py-2 gap-4'>
                 { mapWood(panelData) }
            </div>
         </div>
