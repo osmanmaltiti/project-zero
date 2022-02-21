@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from '../Redux/features/sign-slice';
 import { IoMdMenu, IoMdClose } from 'react-icons/io'
-import { FaMoneyCheckAlt, FaPhoneAlt, FaCartArrowDown } from 'react-icons/fa'
+// import { FaMoneyCheckAlt, FaPhoneAlt, FaCartArrowDown } from 'react-icons/fa'
 import '../Styles/App.css';
 
 export const Home = () => {
@@ -31,19 +31,25 @@ export const Home = () => {
         <div id='home' className='h-screen w-screen flex flex-col justify-between md:relative'>
             <div id='menu' className='flex flex-row justify-between p-4 relative items-center 
             md:w-full md:justify-end'>
-                <h1 className='font-right text-3xl md:fixed md:top-24 md:left-2 md:text-6xl md:w-2
+                <h1 className='font-right text-2xl sm:text-3xl md:fixed md:top-24 md:left-2 md:text-6xl md:w-2
                 lg:text-7xl xl:text-8xl opacity-75 2xl:text-9xl'>ZOZYS ENTERPRISE</h1>
                 <button className='md:hidden' onClick={() => setOpen(!open)}>{ icon }</button>
                 <div id='menu' className= { menu }>
                     <button className='text-md font-roboto flex flex-row font-semibold gap-2 items-center w-72 place-content-center
                     md:w-fit md:font-thin hover:scale-110 transition-all
-                    xl:text-xl 2xl:text-2xl' onClick={() => navigate('/homepage/checkout')}><FaCartArrowDown className='md:hidden'/>Checkout</button>
+                    xl:text-xl 2xl:text-2xl' onClick={() => navigate('/homepage/checkout')}>
+                        {/* <FaCartArrowDown className='md:hidden'/> */}
+                        Checkout</button>
                     <button className='text-md font-roboto font-semibold flex flex-row gap-2 items-center w-72 place-content-center
                     md:w-fit md:font-thin hover:scale-110 transition-all
-                    xl:text-xl 2xl:text-2xl' onClick={() => navigate('/homepage')}><FaMoneyCheckAlt className='md:hidden'/>Pricing</button>
+                    xl:text-xl 2xl:text-2xl' onClick={() => navigate('/homepage')}>
+                        {/* <FaMoneyCheckAlt className='md:hidden'/> */}
+                        Pricing</button>
                     <button className='text-md font-roboto font-semibold flex flex-row gap-2 items-center w-72 place-content-center
                     md:w-fit md:font-thin hover:scale-110 transition-all
-                    xl:text-xl 2xl:text-2xl' onClick={() => navigate('/homepage')}><FaPhoneAlt className='md:hidden'/>Contact</button>
+                    xl:text-xl 2xl:text-2xl' onClick={() => navigate('/homepage')}>
+                        {/* <FaPhoneAlt className='md:hidden'/> */}
+                        Contact</button>
                     <button className='w-full shadow-lg bg-red-500 px-4 rounded text-md font-roboto font-semibold
                     md:w-fit md:p-0 md:bg-transparent md:text-red-500 hover:scale-110 transition-all
                     xl:text-xl 2xl:text-2xl' onClick={LogOut}>Log Out</button>

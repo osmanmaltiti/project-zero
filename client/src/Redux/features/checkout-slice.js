@@ -21,7 +21,7 @@ const checkoutSlice = createSlice({
             };
             const newWoodCart = filter(currentWoodCart, 'id');
             state.woodCart = newWoodCart;
-            state.cartLength = newWoodCart.length + current(state.furnitureCart).length;
+            state.cartLength = newWoodCart.length + (state.furnitureCart).length;
             localStorage.setItem('woodCart', JSON.stringify(state.woodCart));
         },
 
@@ -35,7 +35,7 @@ const checkoutSlice = createSlice({
             };
             const newFurnitureCart = filter(currentFurnitureCart, 'id');
             state.furnitureCart = newFurnitureCart;
-            state.cartLength = newFurnitureCart.length + current(state.woodCart).length;
+            state.cartLength = newFurnitureCart.length + (state.woodCart).length;
             localStorage.setItem('furnitureCart', JSON.stringify(state.furnitureCart));
         },
 
@@ -43,7 +43,7 @@ const checkoutSlice = createSlice({
             const { payload } = action;
             state.woodCart = state.woodCart
                                   .filter(item => item.id !== payload);
-            state.cartLength = state.woodCart.length + current(state.furnitureCart).length;
+            state.cartLength = state.woodCart.length + (state.furnitureCart).length;
             localStorage.setItem('woodCart', JSON.stringify(state.woodCart));
         },
 
@@ -51,7 +51,7 @@ const checkoutSlice = createSlice({
             const { payload } = action;
             state.furnitureCart = state.furnitureCart
                                   .filter(item => item.id !== payload);
-            state.cartLength = state.furnitureCart.length + current(state.woodCart).length;
+            state.cartLength = state.furnitureCart.length + (state.woodCart).length;
             localStorage.setItem('furnitureCart', JSON.stringify(state.furnitureCart));
         },
 

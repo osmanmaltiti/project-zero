@@ -11,6 +11,7 @@
     "axios": "^0.25.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.3",
@@ -18,12 +19,14 @@
     "redux": "^4.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "start:css": "postcss src/Styles/tailwind.css -o src/Styles/index.css",
+    "start:watch": "postcss src/Styles/tailwind.css -o src/Styles/index.css --watch",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:css": "postcss src/tailwind.css -o src/index.css",
-    "build:watch": "postcss src/tailwind.css -o src/index.css --watch"
+    "build:css": "postcss src/Styles/tailwind.css -o src/Styles/index.css",
+    "build:watch": "postcss src/Styles/tailwind.css -o src/Styles/index.css --watch"
   },
   "eslintConfig": {
     "extends": [
